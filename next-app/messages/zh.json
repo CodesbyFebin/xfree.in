@@ -1,0 +1,285 @@
+{
+  "Header": {
+    "tagline": "免费开发者工具",
+    "toolsMenu": "工具",
+    "allPillars": "所有支柱",
+    "developerTools": "开发者工具",
+    "seoTools": "SEO 工具",
+    "aiTools": "AI 工具",
+    "securityTools": "安全工具",
+    "resourcesMenu": "资源",
+    "allGuides": "所有指南",
+    "faq": "常见问题",
+    "howItWorks": "使用方法",
+    "useCases": "使用场景",
+    "aboutMenu": "关于",
+    "aboutXfree": "关于 XFree",
+    "security": "安全",
+    "roadmap": "路线图",
+    "xfreeApp": "XFree 应用",
+    "contact": "联系我们",
+    "launchStudio": "启动 Studio",
+    "allTools": "所有工具"
+  },
+  "Footer": {
+    "tagline": "XFree 为开发者、技术团队和创作者提供以隐私为先的浏览器工具。受支持的操作默认使用本地模式，无需注册。",
+    "openStudio": "打开 XFree Studio",
+    "availableStats": "目前提供 {tools} 个已发布工具和 {pillars} 个已批准的发现中心。",
+    "categoriesHeading": "分类",
+    "popularHeading": "热门",
+    "toolHubsHeading": "工具中心",
+    "resourcesHeading": "资源",
+    "companyHeading": "公司",
+    "developerTools": "XFree 开发者工具",
+    "seoTools": "XFree SEO 工具",
+    "aiTools": "XFree AI 工具",
+    "securityTools": "XFree 安全工具",
+    "textTools": "XFree 文本与差异工具",
+    "convertersTools": "XFree 转换与编码工具",
+    "categoryGenerators": "XFree 生成器",
+    "validatorTools": "XFree 验证器",
+    "allTools": "所有工具",
+    "jsonDataTools": "XFree JSON 和数据工具",
+    "regexTools": "XFree 正则表达式工具",
+    "encodingTools": "XFree 编码工具",
+    "hashTools": "XFree 哈希工具",
+    "generatorTools": "XFree 生成器工具",
+    "networkTools": "XFree DNS 与网络工具",
+    "signals": "动态",
+    "pillarHubs": "XFree 支柱中心",
+    "xmlSitemap": "XML 网站地图",
+    "robotsTxt": "robots.txt",
+    "about": "关于 XFree",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "communityHeading": "社区",
+    "githubRepo": "GitHub 仓库",
+    "reportIssue": "报告问题",
+    "contribute": "参与贡献",
+    "copyright": "© {year} XFree。基于 MIT 许可证发布的开源软件。",
+    "marketing": "市场营销",
+    "application": "应用程序",
+    "trustPrivacyFirst": "隐私优先",
+    "trustOpenSource": "开源",
+    "trustBrowserBased": "基于浏览器",
+    "trustBuiltForEveryone": "为所有人打造",
+    "whatsNewEyebrow": "XFree 最新动态",
+    "whatsNewHeading": "全新工具，更多可能。",
+    "whatsNewDescription": "随时了解 XFree Studio 的最新工具、功能与改进。",
+    "whatsNewCta": "查看最新动态"
+  },
+  "Home": {
+    "badge": "XFree 应用 · 隐私优先工具 · 无需注册",
+    "titleLine1": "免费工具",
+    "titleLine2": "缔造更美好的明天。",
+    "heroTagline": "简单工具。真正自由。",
+    "heroVerbs": "发现。创建。转换。分析。构建。",
+    "subtitle": "免费搞定一切 — 快速、私密、无需注册",
+    "description": "您需要的所有工具，尽在一处。免费。开放。隐私优先。",
+    "heroFeature1": "100% 免费",
+    "heroFeature2": "隐私优先",
+    "heroFeature3": "基于浏览器",
+    "heroFeature4": "开源",
+    "heroFeature5": "人人可用",
+    "heroHandwritten": "工具无极限",
+    "heroSideLine1": "更智能的网络",
+    "heroSideLine2": "更美好的明天。",
+    "searchPlaceholder": "搜索 XFree 工具 — JSON、正则表达式、网站地图、JWT……",
+    "execute": "执行",
+    "popular": "热门：",
+    "statToolsAvailable": "可用工具",
+    "statPillarHubs": "支柱中心",
+    "statSignups": "需要注册",
+    "statClientSide": "客户端运行",
+    "statOpenSource": "开源",
+    "statLocalMode": "默认模式",
+    "liveDemoBadge": "实时演示",
+    "liveDemoTitle": "立即试用 XFree JSON 格式化工具",
+    "liveDemoDescription": "体验即时的浏览器端工具执行。零服务器调用。",
+    "featuredHeading": "XFree 精选工具",
+    "featuredSubheading": "现已在以下平台提供的可用工具",
+    "featuredStudioLink": "XFree Studio 应用",
+    "viewAll": "查看全部",
+    "categoriesHeading": "XFree 工具分类",
+    "categoriesSubheading": "在正确的分类中找到合适的 XFree 工具。",
+    "whyHeading": "为什么选择 XFree 应用来获取隐私优先的工具？",
+    "whySubheading": "您的数据始终保留在浏览器中。XFree 坚信强大的工具应该是私密、快速且无烦恼的。",
+    "howHeading": "三个步骤。零注册。您的数据默认保留在浏览器中。",
+    "pillarsHeading": "XFree 工具目录",
+    "pillarsSubheading": "最全面的开发者工具分类体系。每个 XFree 支柱都将专业集群与专用微工具相连接。",
+    "viewAllPillars": "查看所有 XFree 支柱",
+    "roadmapHeading": "XFree 产品路线图",
+    "publishedTools": "已发布工具",
+    "pillarHubs": "支柱中心",
+    "planned": "计划中",
+    "faqHeading": "关于 XFree 应用、工具、隐私和平台的常见问题。",
+    "ctaHeading": "准备好探索了吗？",
+    "ctaSubheading": "加入数千名正在与 XFree 一起构建更智能、更开放网络的用户。",
+    "ctaHandwritten": "简单工具\n非凡自由。",
+    "ctaLaunch": "启动 XFree Studio 应用",
+    "ctaBrowse": "浏览 XFree 支柱",
+    "heroEyebrow": "人人皆有 Root 权限",
+    "heroHeadlineSuffix": "— 免费工具，真正自由。",
+    "heroSubheadingPrefix": "认识 XFree App 与",
+    "heroSubheadingSuffix": "——面向开发者、AI、数据、SEO 与网页工具的全新 XFree 工作空间。",
+    "heroParagraph": "通过 XFree 发现免费的开发者工具、AI 实用工具、数据工具、SEO 工具、转换器与网页工具。使用 XFree Studio,在一个以隐私为先的工作空间中完成搜索、创建、转换、分析与构建。",
+    "exploreNow": "立即探索 →",
+    "categoryConverters": "转换器",
+    "categoryGeneratorsShort": "生成器",
+    "toolCategoriesAriaLabel": "工具分类",
+    "popularSearchesAriaLabel": "热门搜索",
+    "orbitDeveloper": "开发者",
+    "orbitAI": "AI",
+    "orbitData": "数据",
+    "orbitWeb": "网页",
+    "orbitProductivity": "效率工具",
+    "orbitSecurity": "安全",
+    "faqs": [
+      {
+        "q": "什么是 XFree App？",
+        "a": "XFree App 是面向开发者的终极免费在线平台,提供以隐私为先的微型工具,包括 XFree JSON 格式化工具、XFree HTML 压缩工具、XFree SEO 实用工具和 XFree 加密工具。大多数工具无需注册,100% 在客户端运行;只有少数工具(DNS/IP/WHOIS 查询)会调用 XFree 自己的服务器,因为它们需要访问外部互联网基础设施。"
+      },
+      {
+        "q": "XFree 真的免费且无需注册吗？",
+        "a": "是的。使用 XFree 完全免费,无需注册、无需创建账户,也没有使用限制。所有工具均基于 MIT 许可证开源,几乎全部工具都完全在你的浏览器中运行。"
+      },
+      {
+        "q": "XFree 如何保障隐私？",
+        "a": "XFree 的工具默认在本地模式下运行,使用 JavaScript 和 WebAssembly 在你的浏览器会话内处理数据。除非该工具页面上明确说明,否则你的输入内容绝不会被传输到外部服务器。"
+      },
+      {
+        "q": "XFree 是 CodeBeautify 的什么替代方案？",
+        "a": "XFree 是 CodeBeautify 的隐私优先替代方案。与那些平台不同,XFree 几乎完全在客户端运行,零跟踪、工具页面无广告、不收集数据,并且拥有可供审计的开源代码。"
+      },
+      {
+        "q": "我可以离线使用 XFree 吗？",
+        "a": "可以,但仅限于之前访问过的页面。XFree 会注册一个 service worker,在你加载过工具页面后将其缓存以供离线使用;需要调用服务器的功能(查询、AI Cloud Mode)仍需联网。"
+      },
+      {
+        "q": "XFree 是开源的吗？",
+        "a": "是的。XFree 的全部代码库均基于 MIT 许可证开源。你可以在我们的 GitHub 仓库中审计、fork 并参与贡献。"
+      },
+      {
+        "q": "XFree 和 \"X Free\" 是同一个东西吗？",
+        "a": "是的。XFree 是 XFree App 与 XFree Studio 平台的官方名称。有些人会以带空格的 \"X Free\" 来搜索它——两者指向的是同一款产品。"
+      }
+    ],
+    "metaTitle": "XFree App:免费开发者、SEO 与 AI 工具",
+    "metaDescription": "XFree 是一款面向开发者、SEO 与 AI 工具的免费在线应用——无需注册。JSON 格式化工具、HTML 压缩工具与加密实用工具,100% 在你的浏览器中运行。"
+  },
+  "NotFound": {
+    "title": "页面未找到",
+    "description": "您要查找的页面不存在或已被移动。",
+    "goHome": "返回首页",
+    "browsePillars": "浏览支柱"
+  },
+  "Common": {
+    "skipToContent": "跳至主要内容"
+  },
+  "Tools": {
+    "json-formatter": {
+      "title": "JSON 格式化工具",
+      "shortDescription": "格式化、验证并美化 JSON 数据,支持语法高亮。",
+      "longDescription": "免费的在线 JSON 格式化与验证工具。使用语法高亮格式化 JSON、验证 JSON 语法、美化压缩后的 JSON,并即时解析 JSON 数据。无需注册。",
+      "explanation": "解析 JSON 并以正确的缩进和换行进行格式化。",
+      "howToUse": [
+        "将 JSON 粘贴到输入框",
+        "点击「格式化」",
+        "复制格式化后的结果"
+      ],
+      "faqs": [
+        {
+          "question": "我的数据会被发送到服务器吗？",
+          "answer": "不会,所有处理都在你的浏览器本地完成。"
+        },
+        {
+          "question": "JSON 格式化工具是免费的吗？",
+          "answer": "是的,100% 免费,无需注册。"
+        },
+        {
+          "question": "我的 JSON 数据会怎样？",
+          "answer": "你的 JSON 只会留在浏览器中,绝不会被发送到任何服务器。"
+        }
+      ]
+    },
+    "regex-tester": {
+      "title": "正则表达式测试工具",
+      "shortDescription": "通过实时匹配与语法高亮测试并调试正则表达式。",
+      "longDescription": "免费的在线正则表达式测试与调试工具。通过实时匹配高亮测试正则表达式、查看捕获组、测试多个模式并调试正则语法。支持 JavaScript、Python、PHP 等语言。",
+      "explanation": "针对示例文本测试正则表达式模式,并高亮显示匹配结果。",
+      "howToUse": [
+        "输入正则表达式模式",
+        "输入测试字符串",
+        "实时查看匹配结果"
+      ],
+      "faqs": [
+        {
+          "question": "支持哪些正则表达式方言？",
+          "answer": "浏览器中支持 JavaScript 风格的正则表达式。"
+        },
+        {
+          "question": "可以测试多个模式吗？",
+          "answer": "可以,你可以测试多个模式并查看所有高亮的匹配结果。"
+        }
+      ]
+    },
+    "xml-sitemap-generator": {
+      "title": "XML 站点地图生成器",
+      "shortDescription": "为 Google 与 Bing SEO 生成 XML 站点地图。",
+      "longDescription": "免费的 XML 站点地图生成工具。创建符合 Google 规范的 XML 站点地图,支持优先级、changefreq 与 lastmod 日期。支持视频、图片与新闻站点地图。输出针对 SEO 优化。",
+      "explanation": "创建带有正确命名空间与可选优先级的 XML 站点地图。",
+      "howToUse": [
+        "输入网址",
+        "设置优先级与 changefreq",
+        "下载 XML 站点地图"
+      ],
+      "faqs": []
+    },
+    "meta-tag-generator": {
+      "title": "元标签生成器",
+      "shortDescription": "生成 Open Graph、Twitter Card 与 SEO 元标签。",
+      "longDescription": "免费的元标签生成工具。创建用于 Facebook 的 Open Graph 标签、Twitter 卡片、LinkedIn 与 Pinterest 标签。生成包含标题、描述、关键词与规范网址的 SEO 元标签。",
+      "explanation": "为社交分享与 SEO 创建全面的元标签。",
+      "howToUse": [
+        "输入页面详情",
+        "复制元标签",
+        "添加到 HTML 的 <head> 中"
+      ],
+      "faqs": []
+    },
+    "jwt-decoder": {
+      "title": "JWT 解码工具",
+      "shortDescription": "无需验证即可解码并检查 JSON Web Token。",
+      "longDescription": "免费的在线 JWT 解码工具。解码 JSON Web Token、检查 header 与 payload、查看 claims、检查过期时间。无需将令牌发送到任何地方即可调试 JWT 身份验证。",
+      "explanation": "在不验证的情况下解码 JWT 的 header、payload 与签名。",
+      "howToUse": [
+        "粘贴 JWT",
+        "查看解码后的 header 与 payload",
+        "检查过期时间"
+      ],
+      "faqs": []
+    }
+  },
+  "Pillars": {
+    "json-data-tools": {
+      "name": "JSON 数据工具中心",
+      "description": "完整的 JSON 工具套件：格式化工具、验证工具、压缩工具、扁平化工具、排序工具、差异对比、查看器、转换为 CSV/YAML/XML、查询构建器、模式生成器。"
+    },
+    "regex-pattern-tools": {
+      "name": "正则表达式与模式工具中心",
+      "description": "掌握正则表达式：测试工具、解释工具、构建工具、速查表、调试工具、可视化工具、模式库、匹配工具、替换工具、批处理工具。"
+    },
+    "sitemap-generators": {
+      "name": "站点地图生成器工具中心",
+      "description": "生成站点地图：XML 站点地图、HTML 站点地图、视频站点地图、图片站点地图、新闻站点地图、移动站点地图、RSS 订阅源、XML 索引文件。"
+    },
+    "meta-tag-tools": {
+      "name": "元标签工具中心",
+      "description": "创建元标签：Open Graph、Twitter 卡片、Facebook、LinkedIn、Pinterest、结构化数据标记、规范标签、robots 元标签、viewport。"
+    },
+    "token-decoder-tools": {
+      "name": "令牌解码与编码工具中心",
+      "description": "解码令牌：JWT 解码工具、SAML 解码工具、OAuth 令牌解析器、OIDC ID 令牌解析器、SASL 机制选择器、令牌过期检查工具。"
+    }
+  }
+}

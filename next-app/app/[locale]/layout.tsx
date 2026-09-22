@@ -1,0 +1,256 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import { Inter, JetBrains_Mono, Space_Grotesk, Caveat } from 'next/font/google';
+import { AnalyticsWidgets } from '@/components/analytics/Widgets';
+import { PWARegister } from '@/components/PWARegister';
+import { routing, isRtl, type Locale } from '@/i18n/routing';
+import '../globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-orbitron',
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-caveat',
+  display: 'swap',
+});
+
+const OG_LOCALES: Record<Locale, string> = {
+  en: 'en_US',
+  es: 'es_ES',
+  fr: 'fr_FR',
+  de: 'de_DE',
+  ja: 'ja_JP',
+  hi: 'hi_IN',
+  ar: 'ar_AR',
+  zh: 'zh_CN',
+  ta: 'ta_IN',
+  ml: 'ml_IN',
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Home' });
+  const metaTitle = t('metaTitle');
+  const metaDescription = t('metaDescription');
+  const baseUrl = 'https://www.xfree.in';
+  // The real route for a locale's homepage is exactly "/es" (no
+  // trailing slash) - appending one here would 308-redirect. Only the
+  // default locale's homepage is genuinely "/" with a trailing slash.
+  const path = locale === routing.defaultLocale ? '' : `/${locale}`;
+  const canonicalHomeUrl = locale === routing.defaultLocale ? `${baseUrl}/` : `${baseUrl}${path}`;
+
+  const languages: Record<string, string> = { 'x-default': `${baseUrl}/` };
+  for (const l of routing.locales) {
+    languages[l] = l === routing.defaultLocale ? `${baseUrl}/` : `${baseUrl}/${l}`;
+  }
+
+  return {
+    metadataBase: new URL(baseUrl),
+    applicationName: 'XFree App',
+    // Plain string, not a {default, template} object - every child
+    // page.tsx already brands its own title string with "XFree" (see
+    // tools/pillars/updates pages), so a 'XFree: %s' template was
+    // doubling it into "XFree: XFree JSON Formatter..." instead of
+    // adding the brand once. Next's Metadata type requires `template`
+    // whenever `default` is used, so a plain string is the correct
+    // no-template form here, not a workaround.
+    title: metaTitle,
+    description: metaDescription,
+    authors: [{ name: 'XFree Contributors' }],
+    creator: 'XFree',
+    publisher: 'XFree',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    alternates: {
+      canonical: canonicalHomeUrl,
+      languages,
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'XFree',
+      title: metaTitle,
+      description: metaDescription,
+      url: canonicalHomeUrl,
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: 'XFree developer tools interface with neon green terminal aesthetic',
+        },
+      ],
+      locale: OG_LOCALES[locale as Locale] ?? OG_LOCALES.en,
+      alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALES[l]),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@xfreein',
+      creator: '@xfreein',
+      title: metaTitle,
+      description: metaDescription,
+      images: ['/twitter-image'],
+    },
+    icons: {
+      icon: [
+        { url: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300ff41%22>⚡</text></svg>' },
+      ],
+      apple: [
+        { url: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300ff41%22>⚡</text></svg>' },
+      ],
+    },
+  };
+}
+
+// Site-wide structured data. Kept minimal and factual: no invented build
+// metadata (a prior version of this file shipped a placeholder
+// buildCommit/buildTimestamp and a codeRepository URL pointing at a repo
+// that isn't this one — both removed) and no links to routes that don't
+// exist (a "Categories" breadcrumb previously pointed at /dev-tools,
+// which matches no real route; fixed to /categories).
+function getSchemaData(locale: string) {
+  const baseUrl = 'https://www.xfree.in';
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${baseUrl}/#organization`,
+        name: 'XFree',
+        alternateName: ['XFree.in', 'xfree.in'],
+        url: `${baseUrl}/`,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${baseUrl}/favicon-512x512.png`,
+          width: 512,
+          height: 512,
+        },
+        description: 'XFree develops free browser-based developer, SEO, and single-purpose AI micro-tools.',
+      },
+      {
+        '@type': ['WebSite', 'WebApplication'],
+        '@id': `${baseUrl}/#website`,
+        name: 'XFree',
+        // "X Free" is a real spacing/search variant of this same product,
+        // not a separate entity - see the homepage FAQ and the hero copy's
+        // "built for people searching XFree, X Free..." for the same
+        // framing in visible text.
+        alternateName: ['XFree.in', 'xfree.in', 'X Free'],
+        url: `${baseUrl}/`,
+        description: 'Free browser-based developer, SEO, and single-purpose AI micro-tools.',
+        inLanguage: locale,
+        applicationCategory: 'Utilities',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${baseUrl}/#organization` },
+        // No potentialAction/SearchAction: the hero's search bar matches
+        // client-side against the tool registry and navigates directly to
+        // a tool (or /tools) - there is no server-rendered `/?q=` results
+        // page for a SearchAction to honestly point at. Removed rather
+        // than left pointing at a URL that doesn't actually search.
+      },
+      // No site-wide BreadcrumbList here: a fixed "Home > Categories >
+      // Pillar Hubs" trail on every page described no page's real position,
+      // and its /categories item is a 404. Pages that have a real trail
+      // (tools, pillars) emit their own via components/seo/Breadcrumbs.tsx.
+    ],
+  };
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  return (
+    <html
+      lang={locale}
+      dir={isRtl(locale as Locale) ? 'rtl' : 'ltr'}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${caveat.variable}`}
+    >
+      <head>
+        {/* Sets data-theme before hydration/paint so the light theme
+            doesn't flash dark first (or vice versa) - must stay inline,
+            not a useEffect, since that would run after first paint. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('xfree-theme');if(t==='light')document.documentElement.dataset.theme='light';}catch(e){}`,
+          }}
+        />
+        {/* Security headers (CSP, COOP, COEP, Permissions-Policy, nosniff,
+            Referrer-Policy) are set once, authoritatively, via next.config.js's
+            headers() as real HTTP response headers - this used to duplicate
+            them here as <meta httpEquiv> tags too, with a DIFFERENT, looser
+            CSP (allowlisting googlesyndication/jsdelivr/tailwindcss-cdn/
+            api.github.com hosts that were never actually used, and that the
+            real header CSP doesn't allow). Browsers ignore frame-ancestors
+            and X-Frame-Options from a meta tag entirely, and don't support
+            COEP via meta at all, so those specific duplicates were always
+            inert - the CSP/Permissions-Policy/etc ones weren't inert, they
+            were just a second, conflicting, unmaintained copy of the same
+            policy. Removed rather than kept in sync by hand in two places. */}
+        <meta name="theme-color" content="#050508" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="XFree App" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="alternate" type="text/plain" title="XFree llms.txt" href="/llms.txt" />
+        <link rel="alternate" type="application/rss+xml" title="XFree Tools RSS Feed" href="/rss/tools.xml" />
+        <link rel="alternate" type="application/rss+xml" title="XFree Guides RSS Feed" href="/rss/guides.xml" />
+        <link rel="alternate" type="application/rss+xml" title="XFree Updates RSS Feed" href="/rss/updates.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchemaData(locale)) }}
+        />
+      </head>
+      <body className="bg-cyber-bg text-cyber-text antialiased min-h-screen">
+        <NextIntlClientProvider>
+          {children}
+          <AnalyticsWidgets />
+          <PWARegister />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}

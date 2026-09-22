@@ -1,0 +1,285 @@
+{
+  "Header": {
+    "tagline": "Herramientas gratuitas para desarrolladores",
+    "toolsMenu": "Herramientas",
+    "allPillars": "Todos los pilares",
+    "developerTools": "Herramientas de desarrollo",
+    "seoTools": "Herramientas SEO",
+    "aiTools": "Herramientas de IA",
+    "securityTools": "Herramientas de seguridad",
+    "resourcesMenu": "Recursos",
+    "allGuides": "Todas las guías",
+    "faq": "Preguntas frecuentes",
+    "howItWorks": "Cómo funciona",
+    "useCases": "Casos de uso",
+    "aboutMenu": "Acerca de",
+    "aboutXfree": "Acerca de XFree",
+    "security": "Seguridad",
+    "roadmap": "Hoja de ruta",
+    "xfreeApp": "Aplicación XFree",
+    "contact": "Contacto",
+    "launchStudio": "Abrir Studio",
+    "allTools": "Todas las herramientas"
+  },
+  "Footer": {
+    "tagline": "XFree ofrece herramientas de navegador centradas en la privacidad para desarrolladores, equipos técnicos y creadores. El modo local se usa de forma predeterminada en las operaciones compatibles, sin necesidad de registro.",
+    "openStudio": "Abrir XFree Studio",
+    "availableStats": "Actualmente hay {tools} herramientas publicadas y {pillars} centros de descubrimiento aprobados disponibles.",
+    "categoriesHeading": "Categorías",
+    "popularHeading": "Popular",
+    "toolHubsHeading": "Centros de herramientas",
+    "resourcesHeading": "Recursos",
+    "companyHeading": "Empresa",
+    "developerTools": "Herramientas de desarrollo XFree",
+    "seoTools": "Herramientas SEO XFree",
+    "aiTools": "Herramientas de IA XFree",
+    "securityTools": "Herramientas de seguridad XFree",
+    "textTools": "Herramientas de Texto y Diff de XFree",
+    "convertersTools": "Convertidores y Codificadores de XFree",
+    "categoryGenerators": "Generadores de XFree",
+    "validatorTools": "Validadores de XFree",
+    "allTools": "Todas las Herramientas",
+    "jsonDataTools": "Herramientas de JSON y datos XFree",
+    "regexTools": "Herramientas Regex de XFree",
+    "encodingTools": "Herramientas de Codificación XFree",
+    "hashTools": "Herramientas Hash de XFree",
+    "generatorTools": "Herramientas Generadoras XFree",
+    "networkTools": "Herramientas DNS y Red XFree",
+    "signals": "Señales",
+    "pillarHubs": "Centros de pilares XFree",
+    "xmlSitemap": "Mapa del sitio XML",
+    "robotsTxt": "robots.txt",
+    "about": "Acerca de XFree",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "communityHeading": "Comunidad",
+    "githubRepo": "Repositorio de GitHub",
+    "reportIssue": "Reportar un Problema",
+    "contribute": "Contribuir",
+    "copyright": "© {year} XFree. Software de código abierto publicado bajo la licencia MIT.",
+    "marketing": "Marketing",
+    "application": "Aplicación",
+    "trustPrivacyFirst": "Privacidad Primero",
+    "trustOpenSource": "Código Abierto",
+    "trustBrowserBased": "Basado En El Navegador",
+    "trustBuiltForEveryone": "Hecho Para Todos",
+    "whatsNewEyebrow": "Novedades De XFree",
+    "whatsNewHeading": "Nuevas Herramientas. Más Posibilidades.",
+    "whatsNewDescription": "Mantente al día con las últimas herramientas, funciones y mejoras de XFree Studio.",
+    "whatsNewCta": "Explorar Novedades"
+  },
+  "Home": {
+    "badge": "App XFree · Herramientas centradas en la privacidad · Sin registro",
+    "titleLine1": "Herramientas Gratuitas",
+    "titleLine2": "Para un Mañana Más Brillante.",
+    "heroTagline": "Herramientas Simples. Libertad Real.",
+    "heroVerbs": "Descubre. Crea. Convierte. Analiza. Construye.",
+    "subtitle": "Haz lo que necesitas gratis — Rápido, privado, sin registro",
+    "description": "Todas las herramientas que necesitas. En un solo lugar. Gratis. Abierto. Privacidad primero.",
+    "heroFeature1": "100% Gratis",
+    "heroFeature2": "Privacidad Primero",
+    "heroFeature3": "Basado en el Navegador",
+    "heroFeature4": "Código Abierto",
+    "heroFeature5": "Para Todos",
+    "heroHandwritten": "Herramientas Sin Límites",
+    "heroSideLine1": "Una Web Más Inteligente",
+    "heroSideLine2": "Un Mañana Más Brillante.",
+    "searchPlaceholder": "Buscar herramientas XFree — JSON, Regex, Sitemap, JWT, ...",
+    "execute": "EJECUTAR",
+    "popular": "Popular:",
+    "statToolsAvailable": "Herramientas disponibles",
+    "statPillarHubs": "Centros de pilares",
+    "statSignups": "Registro requerido",
+    "statClientSide": "Del lado del cliente",
+    "statOpenSource": "Código abierto",
+    "statLocalMode": "Modo predeterminado",
+    "liveDemoBadge": "Demo en vivo",
+    "liveDemoTitle": "Prueba ahora el formateador JSON de XFree",
+    "liveDemoDescription": "Experimenta la ejecución instantánea de herramientas en el navegador. Cero llamadas al servidor.",
+    "featuredHeading": "Herramientas destacadas de XFree",
+    "featuredSubheading": "Herramientas funcionales disponibles ahora en",
+    "featuredStudioLink": "la app XFree Studio",
+    "viewAll": "Ver todo",
+    "categoriesHeading": "Categorías de herramientas XFree",
+    "categoriesSubheading": "Encuentra la herramienta XFree adecuada en la categoría correcta.",
+    "whyHeading": "¿Por qué elegir la app XFree para herramientas centradas en la privacidad?",
+    "whySubheading": "Tus datos permanecen en tu navegador. XFree cree que las herramientas potentes deben ser privadas, rápidas y sin complicaciones.",
+    "howHeading": "Tres pasos. Cero registro. Tus datos permanecen en tu navegador de forma predeterminada.",
+    "pillarsHeading": "El directorio de herramientas XFree",
+    "pillarsSubheading": "La taxonomía de herramientas para desarrolladores más completa. Cada pilar de XFree conecta clústeres especializados con micro-herramientas dedicadas.",
+    "viewAllPillars": "Ver todos los pilares de XFree",
+    "roadmapHeading": "Hoja de ruta del producto XFree",
+    "publishedTools": "Herramientas publicadas",
+    "pillarHubs": "Centros de pilares",
+    "planned": "Planificado",
+    "faqHeading": "Preguntas comunes sobre la app XFree, sus herramientas, la privacidad y la plataforma.",
+    "ctaHeading": "¿Listo para Explorar?",
+    "ctaSubheading": "Únete a miles de usuarios que ya están construyendo una web más inteligente y abierta con XFree.",
+    "ctaHandwritten": "Herramientas Simples\nLibertad Extraordinaria.",
+    "ctaLaunch": "Abrir la app XFree Studio",
+    "ctaBrowse": "Explorar los pilares de XFree",
+    "heroEyebrow": "Acceso Root Para Todos",
+    "heroHeadlineSuffix": "— Herramientas Gratis. Libertad Real.",
+    "heroSubheadingPrefix": "Conoce la app de XFree y",
+    "heroSubheadingSuffix": "— el nuevo espacio de trabajo de XFree para herramientas de desarrollo, IA, datos, SEO y web.",
+    "heroParagraph": "Descubre herramientas gratuitas para desarrolladores, utilidades de IA, herramientas de datos, herramientas SEO, conversores y utilidades web con XFree. Usa XFree Studio para buscar, crear, convertir, analizar y construir desde un único espacio centrado en la privacidad.",
+    "exploreNow": "Explorar Ahora →",
+    "categoryConverters": "Conversores",
+    "categoryGeneratorsShort": "Generadores",
+    "toolCategoriesAriaLabel": "Categorías de herramientas",
+    "popularSearchesAriaLabel": "Búsquedas populares",
+    "orbitDeveloper": "DESARROLLO",
+    "orbitAI": "IA",
+    "orbitData": "DATOS",
+    "orbitWeb": "WEB",
+    "orbitProductivity": "PRODUCTIVIDAD",
+    "orbitSecurity": "SEGURIDAD",
+    "faqs": [
+      {
+        "q": "¿Qué es la app XFree?",
+        "a": "La app XFree es la plataforma online gratuita definitiva para desarrolladores, con micro-herramientas centradas en la privacidad como formateadores JSON, minificadores HTML, utilidades SEO y herramientas criptográficas de XFree. La mayoría de las herramientas funcionan 100% en tu navegador sin necesidad de registro; algunas pocas (búsqueda de DNS/IP/WHOIS) llaman al propio servidor de XFree porque necesitan acceder a infraestructura externa de internet."
+      },
+      {
+        "q": "¿XFree es realmente gratis y sin registro?",
+        "a": "Sí. XFree es completamente gratuito, sin necesidad de registro, sin creación de cuenta y sin límites de uso. Todas las herramientas son de código abierto bajo la licencia MIT y casi todas funcionan enteramente en tu navegador."
+      },
+      {
+        "q": "¿Cómo garantiza XFree la privacidad?",
+        "a": "Las herramientas de XFree funcionan en Modo Local de forma predeterminada, procesando tus datos dentro de tu sesión del navegador con JavaScript y WebAssembly. Tu información nunca se transmite a servidores externos, salvo que se indique claramente en la página de esa herramienta."
+      },
+      {
+        "q": "¿Cuál es la alternativa de XFree a CodeBeautify?",
+        "a": "XFree es una alternativa centrada en la privacidad frente a CodeBeautify. A diferencia de esas plataformas, XFree funciona casi por completo en el lado del cliente, sin rastreo, sin anuncios en las páginas de herramientas, sin recopilación de datos y con código abierto que puedes auditar."
+      },
+      {
+        "q": "¿Puedo usar XFree sin conexión?",
+        "a": "Sí, para páginas visitadas anteriormente. XFree registra un service worker que almacena en caché las páginas de herramientas para uso sin conexión una vez que las has cargado; las funciones que requieren una llamada al servidor (búsquedas, AI Cloud Mode) siguen necesitando conexión."
+      },
+      {
+        "q": "¿Es XFree de código abierto?",
+        "a": "Sí. Todo el código de XFree es de código abierto bajo la licencia MIT. Puedes auditarlo, hacer un fork y contribuir en nuestro repositorio de GitHub."
+      },
+      {
+        "q": "¿Es XFree lo mismo que \"X Free\"?",
+        "a": "Sí. XFree es el nombre oficial de la plataforma XFree App y XFree Studio. Algunas personas lo buscan como \"X Free\" (con espacio); ambos hacen referencia al mismo producto."
+      }
+    ],
+    "metaTitle": "App XFree: Herramientas Gratis de Desarrollo, SEO e IA",
+    "metaDescription": "XFree es una app online gratuita con herramientas de desarrollo, SEO e IA — sin necesidad de registro. Formateadores JSON, minificadores HTML y utilidades criptográficas que funcionan 100% en tu navegador."
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "goHome": "Ir a la página principal",
+    "browsePillars": "Explorar pilares"
+  },
+  "Common": {
+    "skipToContent": "Saltar al contenido principal"
+  },
+  "Tools": {
+    "json-formatter": {
+      "title": "Formateador JSON",
+      "shortDescription": "Formatea, valida y embellece datos JSON con resaltado de sintaxis.",
+      "longDescription": "Formateador y validador de JSON gratuito en línea. Formatea JSON con resaltado de sintaxis, valida la sintaxis JSON, embellece JSON minificado y analiza datos JSON al instante. Sin necesidad de registro.",
+      "explanation": "Analiza JSON y lo formatea con sangría y saltos de línea correctos.",
+      "howToUse": [
+        "Pega el JSON en el campo de entrada",
+        "Haz clic en Formatear",
+        "Copia el resultado formateado"
+      ],
+      "faqs": [
+        {
+          "question": "¿Mis datos se envían a servidores?",
+          "answer": "No, todo el procesamiento se realiza en tu navegador."
+        },
+        {
+          "question": "¿El formateador JSON es gratuito?",
+          "answer": "Sí, 100% gratis y sin necesidad de registro."
+        },
+        {
+          "question": "¿Qué ocurre con mis datos JSON?",
+          "answer": "Tu JSON permanece en tu navegador y nunca se envía a ningún servidor."
+        }
+      ]
+    },
+    "regex-tester": {
+      "title": "Probador de Expresiones Regulares",
+      "shortDescription": "Prueba y depura expresiones regulares con coincidencias en tiempo real y resaltado de sintaxis.",
+      "longDescription": "Probador y depurador de expresiones regulares gratuito en línea. Prueba expresiones regulares con resaltado de coincidencias en tiempo real, visualiza grupos de captura, prueba varios patrones y depura la sintaxis regex. Compatible con JavaScript, Python, PHP y más.",
+      "explanation": "Prueba patrones regex contra un texto de ejemplo con resaltado de coincidencias.",
+      "howToUse": [
+        "Introduce el patrón regex",
+        "Introduce el texto de prueba",
+        "Observa las coincidencias en tiempo real"
+      ],
+      "faqs": [
+        {
+          "question": "¿Qué variantes de regex son compatibles?",
+          "answer": "Se admite la sintaxis regex de estilo JavaScript en el navegador."
+        },
+        {
+          "question": "¿Puedo probar varios patrones?",
+          "answer": "Sí, puedes probar varios patrones y ver todas las coincidencias resaltadas."
+        }
+      ]
+    },
+    "xml-sitemap-generator": {
+      "title": "Generador de Sitemap XML",
+      "shortDescription": "Genera sitemaps XML para el SEO de Google y Bing.",
+      "longDescription": "Generador de sitemap XML gratuito. Crea sitemaps XML compatibles con Google con prioridades, changefreq y fechas lastmod. Compatible con sitemaps de video, imagen y noticias. Salida optimizada para SEO.",
+      "explanation": "Crea un sitemap XML con el espacio de nombres correcto y prioridades opcionales.",
+      "howToUse": [
+        "Introduce las URLs",
+        "Configura prioridades y changefreq",
+        "Descarga el sitemap XML"
+      ],
+      "faqs": []
+    },
+    "meta-tag-generator": {
+      "title": "Generador de Meta Tags",
+      "shortDescription": "Genera etiquetas Open Graph, Twitter Card y meta tags SEO.",
+      "longDescription": "Generador de meta tags gratuito. Crea etiquetas Open Graph para Facebook, tarjetas de Twitter, LinkedIn y Pinterest. Genera meta tags SEO incluyendo título, descripción, palabras clave y URLs canónicas.",
+      "explanation": "Crea meta tags completas para compartir en redes sociales y SEO.",
+      "howToUse": [
+        "Introduce los datos de la página",
+        "Copia las meta tags",
+        "Añádelas al <head> del HTML"
+      ],
+      "faqs": []
+    },
+    "jwt-decoder": {
+      "title": "Decodificador JWT",
+      "shortDescription": "Decodifica e inspecciona JSON Web Tokens sin verificación.",
+      "longDescription": "Decodificador JWT gratuito en línea. Decodifica JSON Web Tokens, inspecciona encabezado y payload, visualiza claims, comprueba la expiración. Depura la autenticación JWT sin enviar tokens a ningún lado.",
+      "explanation": "Decodifica el encabezado, payload y firma del JWT sin verificarlo.",
+      "howToUse": [
+        "Pega el JWT",
+        "Consulta el encabezado y payload decodificados",
+        "Comprueba la expiración"
+      ],
+      "faqs": []
+    }
+  },
+  "Pillars": {
+    "json-data-tools": {
+      "name": "Hub de Herramientas de Datos JSON",
+      "description": "Kit completo de JSON: formateador, validador, minificador, aplanador, ordenador, diff, visor, conversor a CSV/YAML/XML, generador de consultas, generador de esquemas."
+    },
+    "regex-pattern-tools": {
+      "name": "Hub de Herramientas de Regex y Patrones",
+      "description": "Domina las expresiones regulares: probador, explicador, constructor, chuleta, depurador, visualizador, biblioteca de patrones, comparador, reemplazador, procesador por lotes."
+    },
+    "sitemap-generators": {
+      "name": "Hub de Generadores de Sitemap",
+      "description": "Genera sitemaps: sitemap XML, sitemap HTML, sitemap de video, sitemap de imágenes, sitemap de noticias, sitemap móvil, feed RSS, archivos de índice XML."
+    },
+    "meta-tag-tools": {
+      "name": "Hub de Herramientas de Meta Tags",
+      "description": "Crea meta tags: Open Graph, tarjetas de Twitter, Facebook, LinkedIn, Pinterest, marcado de esquema, etiquetas canónicas, meta robots, viewport."
+    },
+    "token-decoder-tools": {
+      "name": "Hub de Decodificadores y Codificadores de Tokens",
+      "description": "Decodifica tokens: decodificador JWT, decodificador SAML, analizador de tokens OAuth, analizador de ID token OIDC, selector de mecanismo SASL, verificador de expiración de tokens."
+    }
+  }
+}
