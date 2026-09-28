@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { TOOLS, CATEGORIES } from '@/lib/data/tools';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 
 interface Props {
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.label} - Free Online Tools | XFree`,
     description: `Browse free ${cat.label.toLowerCase()}. ${cat.description}`,
     alternates: buildAlternates(`/categories/${category}`, locale),
+    ...(!hasEligibleTranslation(`/categories/${category}`, locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
