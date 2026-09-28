@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { findGuide, GUIDES } from '@/lib/data/guides';
 import { findToolById } from '@/lib/data/toolsWithSEO';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 
 interface Props {
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${guide.title} | XFree Guides`,
     description: guide.description,
     alternates: buildAlternates(`/guides/${guide.slug}`, locale),
+    ...(!hasEligibleTranslation(`/guides/${guide.slug}`, locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
