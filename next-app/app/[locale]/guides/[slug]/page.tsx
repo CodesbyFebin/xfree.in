@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { findGuide, GUIDES } from '@/lib/data/guides';
+import { findToolById } from '@/lib/data/toolsWithSEO';
 import { buildAlternates } from '@/lib/canonical';
 import type { Locale } from '@/i18n/routing';
 
@@ -77,6 +78,25 @@ export default async function GuideDetailPage({ params }: Props) {
               </section>
             ))}
           </article>
+
+          {guide.relatedToolSlugs && guide.relatedToolSlugs.length > 0 && (
+            <section className="cyber-card p-6 space-y-3" aria-labelledby="guide-tools-heading">
+              <h2 id="guide-tools-heading" className="text-lg font-bold text-cyber-text">Try the tools in this guide</h2>
+              <ul className="space-y-2">
+                {guide.relatedToolSlugs.map((toolSlug) => {
+                  const tool = findToolById(toolSlug);
+                  if (!tool?.indexable) return null;
+                  return (
+                    <li key={tool.slug}>
+                      <Link href={`/tools/${tool.slug}`} className="text-cyber-glow hover:underline">
+                        {tool.title} — {tool.shortDescription}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
 
           <div className="text-center">
             <Link
