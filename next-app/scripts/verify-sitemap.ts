@@ -15,8 +15,11 @@ import sitemap from "../app/sitemap";
 import { TOOLS } from "../lib/data/toolsWithSEO";
 import { PILLARS } from "../lib/data/pillars";
 import { routing } from "../i18n/routing";
+import { eligibleLocalesForPath } from "../lib/i18n/translationEligibility";
 
 const BASE_URL = "https://www.xfree.in";
+const indexableToolLocaleGap = () => TOOLS.filter((tool) => tool.indexable)
+  .reduce((gap, tool) => gap + routing.locales.length - eligibleLocalesForPath(`/tools/${tool.slug}`).length, 0);
 
 const failures: string[] = [];
 function check(label: string, pass: boolean, detail?: string) {
@@ -35,17 +38,22 @@ async function main() {
 
   console.log("\n=== Structural checks (no network) ===");
 
-  check("total URL count is 1,510", entries.length === 1510, `got ${entries.length}`);
+  const expectedTotal = 1510 - indexableToolLocaleGap();
+  check(`total URL count matches eligible translations (${expectedTotal})`, entries.length === expectedTotal, `got ${entries.length}`);
   check("all URLs unique", uniqueUrls.size === urls.length, `${urls.length - uniqueUrls.size} duplicate(s)`);
 
   const indexableTools = TOOLS.filter((t) => t.indexable);
-  const expectedToolUrls = indexableTools.length * routing.locales.length;
+  const expectedToolUrls = indexableTools.reduce((count, tool) => count + eligibleLocalesForPath(`/tools/${tool.slug}`).length, 0);
   const actualToolUrls = urls.filter((u) => u.includes("/tools/")).length;
   check(
-    `58 tool records × ${routing.locales.length} locales = ${expectedToolUrls} tool URLs`,
+    `58 tool records across eligible locales = ${expectedToolUrls} tool URLs`,
     indexableTools.length === 58 && actualToolUrls === expectedToolUrls,
     `indexable tools=${indexableTools.length}, tool URLs=${actualToolUrls}, expected=${expectedToolUrls}`,
   );
+  check("German JSON formatter included", uniqueUrls.has(`${BASE_URL}/de/tools/json-formatter`));
+  check("Untranslated German SQL formatter omitted", !uniqueUrls.has(`${BASE_URL}/de/tools/sql-formatter`));
+  check("German SQL omitted from reciprocal English alternates",
+    !entries.find((entry) => entry.url === `${BASE_URL}/tools/sql-formatter`)?.alternates?.languages?.de);
 
   const localeHomepages = routing.locales.map((l) => (l === routing.defaultLocale ? `${BASE_URL}/` : `${BASE_URL}/${l}`));
   const badTrailingSlash = localeHomepages.filter((h) => h !== `${BASE_URL}/` && h.endsWith("/"));
