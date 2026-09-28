@@ -2,6 +2,21 @@
   "/guides": [
     "en"
   ],
+  "/about": [
+    "en"
+  ],
+  "/how-it-works": [
+    "en"
+  ],
+  "/privacy": [
+    "en"
+  ],
+  "/terms": [
+    "en"
+  ],
+  "/security": [
+    "en"
+  ],
   "/guides/regex-cheat-sheet": [
     "en"
   ],
