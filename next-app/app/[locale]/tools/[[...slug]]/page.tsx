@@ -338,7 +338,8 @@ async function ToolDetail({ tool, locale }: { tool: NonNullable<ReturnType<typeo
     { name: tool.title, href: `/tools/${tool.slug}` },
   ];
 
-  const toolSchema = generateToolSchema(tool);
+  const schemaLocale = hasEligibleTranslation(`/tools/${tool.slug}`, locale) ? locale : 'en';
+  const toolSchema = generateToolSchema(tool, schemaLocale);
   const faqSchema = tool.faqs.length > 0 ? generateFAQSchema(tool.faqs) : null;
   const howToSchema = generateHowToSchema(tool.title, tool.howToUse);
 
