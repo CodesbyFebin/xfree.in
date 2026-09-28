@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { TOOLS } from '../lib/data/toolsWithSEO';
+import { TOOLS, CATEGORIES } from '../lib/data/toolsWithSEO';
+import { GUIDES } from '../lib/data/guides';
 import { routing } from '../i18n/routing';
 import type { ToolDefinition } from '../types';
 
@@ -24,6 +25,12 @@ function complete(tool: ToolDefinition, translation?: Translation): boolean {
 }
 
 const manifest: Record<string, string[]> = {};
+// These page families render their main copy from English-only source
+// modules today. When localized main bodies are introduced, replace this
+// English-only eligibility with field-level checks for those sources.
+manifest['/guides'] = [routing.defaultLocale];
+for (const guide of GUIDES) manifest[`/guides/${guide.slug}`] = [routing.defaultLocale];
+for (const category of CATEGORIES) manifest[`/categories/${category.slug}`] = [routing.defaultLocale];
 for (const tool of TOOLS.filter((item) => item.indexable)) {
   manifest[`/tools/${tool.slug}`] = [routing.defaultLocale];
 }
@@ -36,4 +43,4 @@ for (const locale of routing.locales) {
 }
 const output = join(process.cwd(), 'lib/i18n/translationManifest.json');
 writeFileSync(output, `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(`Wrote ${output}: ${Object.values(manifest).reduce((sum, locales) => sum + locales.length, 0)} eligible tool URLs`);
+console.log(`Wrote ${output}: ${Object.values(manifest).reduce((sum, locales) => sum + locales.length, 0)} eligible URLs across audited families`);
