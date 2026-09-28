@@ -14,6 +14,7 @@ import { generateToolSchema, generateFAQSchema, generateHowToSchema, generateBre
 import { USE_CASES } from '@/lib/data/content';
 import { truncateForMeta } from '@/lib/seo/metaDescription';
 import { loadContentTranslations, localizeTool, localizePillar } from '@/lib/i18n/localizedContent';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 import { JsonFormatterTool } from '@/components/tools/JsonFormatterTool';
 import { RegexTesterTool } from '@/components/tools/RegexTesterTool';
@@ -175,6 +176,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rawTool = findToolById(toolSlug);
 
   if (rawTool) {
+    const path = `/tools/${rawTool.slug}`;
+    if (!hasEligibleTranslation(path, locale)) {
+      return {
+        title: `XFree ${rawTool.title} — Free Online, No Signup`,
+        robots: { index: false, follow: true },
+        alternates: { canonical: buildCanonical(path) },
+      };
+    }
     const { tools } = await loadContentTranslations(locale);
     const tool = localizeTool(rawTool, tools);
     const tHeaderMeta = await getTranslations({ locale, namespace: 'Header' });
@@ -249,6 +258,8 @@ export default async function ToolPage({ params }: Props) {
   const rawTool = findToolById(toolSlug);
 
   if (rawTool) {
+    // Keep existing locale links usable while preventing untranslated English
+    // fallback pages from joining the search index or hreflang cluster.
     const { tools } = await loadContentTranslations(locale);
     return <ToolDetail tool={localizeTool(rawTool, tools)} locale={locale} />;
   }
