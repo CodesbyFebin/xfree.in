@@ -1,4 +1,58 @@
 {
+  "/guides": [
+    "en"
+  ],
+  "/guides/regex-cheat-sheet": [
+    "en"
+  ],
+  "/guides/cron-expression-examples": [
+    "en"
+  ],
+  "/guides/common-json-formatting-errors": [
+    "en"
+  ],
+  "/guides/canonical-tag-vs-301-redirect": [
+    "en"
+  ],
+  "/categories/seo-url-tools": [
+    "en"
+  ],
+  "/categories/developer-tools": [
+    "en"
+  ],
+  "/categories/ai-tools": [
+    "en"
+  ],
+  "/categories/text-tools": [
+    "en"
+  ],
+  "/categories/converters": [
+    "en"
+  ],
+  "/categories/generators": [
+    "en"
+  ],
+  "/categories/validators": [
+    "en"
+  ],
+  "/categories/security-tools": [
+    "en"
+  ],
+  "/categories/media-docs": [
+    "en"
+  ],
+  "/categories/business-tools": [
+    "en"
+  ],
+  "/categories/image-tools": [
+    "en"
+  ],
+  "/categories/video-tools": [
+    "en"
+  ],
+  "/categories/pdf-tools": [
+    "en"
+  ],
   "/tools/json-formatter": [
     "en",
     "es",
