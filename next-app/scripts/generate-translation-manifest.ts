@@ -29,6 +29,9 @@ const manifest: Record<string, string[]> = {};
 // modules today. When localized main bodies are introduced, replace this
 // English-only eligibility with field-level checks for those sources.
 manifest['/guides'] = [routing.defaultLocale];
+for (const path of ['/about', '/how-it-works', '/privacy', '/terms', '/security']) {
+  manifest[path] = [routing.defaultLocale];
+}
 for (const guide of GUIDES) manifest[`/guides/${guide.slug}`] = [routing.defaultLocale];
 for (const category of CATEGORIES) manifest[`/categories/${category.slug}`] = [routing.defaultLocale];
 for (const tool of TOOLS.filter((item) => item.indexable)) {
