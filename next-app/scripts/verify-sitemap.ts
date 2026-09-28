@@ -14,12 +14,20 @@
 import sitemap from "../app/sitemap";
 import { TOOLS } from "../lib/data/toolsWithSEO";
 import { PILLARS } from "../lib/data/pillars";
+import { GUIDES } from "../lib/data/guides";
+import { CATEGORIES } from "../lib/data/toolsWithSEO";
 import { routing } from "../i18n/routing";
 import { eligibleLocalesForPath } from "../lib/i18n/translationEligibility";
 
 const BASE_URL = "https://www.xfree.in";
-const indexableToolLocaleGap = () => TOOLS.filter((tool) => tool.indexable)
-  .reduce((gap, tool) => gap + routing.locales.length - eligibleLocalesForPath(`/tools/${tool.slug}`).length, 0);
+const auditedPaths = [
+  ...TOOLS.filter((tool) => tool.indexable).map((tool) => `/tools/${tool.slug}`),
+  '/guides',
+  ...GUIDES.map((guide) => `/guides/${guide.slug}`),
+  ...CATEGORIES.map((category) => `/categories/${category.slug}`),
+];
+const auditedLocaleGap = () => auditedPaths.reduce((gap, path) =>
+  gap + routing.locales.length - eligibleLocalesForPath(path).length, 0);
 
 const failures: string[] = [];
 function check(label: string, pass: boolean, detail?: string) {
@@ -38,7 +46,7 @@ async function main() {
 
   console.log("\n=== Structural checks (no network) ===");
 
-  const expectedTotal = 1510 - indexableToolLocaleGap();
+  const expectedTotal = 1510 - auditedLocaleGap();
   check(`total URL count matches eligible translations (${expectedTotal})`, entries.length === expectedTotal, `got ${entries.length}`);
   check("all URLs unique", uniqueUrls.size === urls.length, `${urls.length - uniqueUrls.size} duplicate(s)`);
 
@@ -52,13 +60,17 @@ async function main() {
   );
   check("German JSON formatter included", uniqueUrls.has(`${BASE_URL}/de/tools/json-formatter`));
   check("Untranslated German SQL formatter omitted", !uniqueUrls.has(`${BASE_URL}/de/tools/sql-formatter`));
+  check("English guides and categories retained; untranslated variants omitted",
+    uniqueUrls.has(`${BASE_URL}/guides/regex-cheat-sheet`) &&
+    uniqueUrls.has(`${BASE_URL}/categories/developer-tools`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/guides/regex-cheat-sheet`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/categories/developer-tools`));
   check("German SQL omitted from reciprocal English alternates",
     !entries.find((entry) => entry.url === `${BASE_URL}/tools/sql-formatter`)?.alternates?.languages?.de);
   // Verify every tool member declares exactly the same eligible cluster,
   // including itself and x-default, rather than sampling one language pair.
-  const toolClusterErrors: string[] = [];
-  for (const tool of indexableTools) {
-    const path = `/tools/${tool.slug}`;
+  const clusterErrors: string[] = [];
+  for (const path of auditedPaths) {
     const eligible = eligibleLocalesForPath(path);
     const expected = Object.fromEntries([
       ["x-default", `${BASE_URL}${path}`],
@@ -67,11 +79,11 @@ async function main() {
     for (const entry of entries.filter((item) => item.url.endsWith(path))) {
       const actual = entry.alternates?.languages;
       if (JSON.stringify(actual) !== JSON.stringify(expected) ||
-        !Object.values(expected).includes(entry.url)) toolClusterErrors.push(entry.url);
+        !Object.values(expected).includes(entry.url)) clusterErrors.push(entry.url);
     }
   }
-  check("all tool hreflang clusters are reciprocal and self-referential",
-    toolClusterErrors.length === 0, toolClusterErrors.slice(0, 5).join(", "));
+  check("all audited hreflang clusters are reciprocal and self-referential",
+    clusterErrors.length === 0, clusterErrors.slice(0, 5).join(", "));
 
   const localeHomepages = routing.locales.map((l) => (l === routing.defaultLocale ? `${BASE_URL}/` : `${BASE_URL}/${l}`));
   const badTrailingSlash = localeHomepages.filter((h) => h !== `${BASE_URL}/` && h.endsWith("/"));
