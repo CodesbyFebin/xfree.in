@@ -1,15 +1,17 @@
 import { ToolDefinition, PillarDefinition } from '@/types';
 import { buildCanonical } from '@/lib/canonical';
 
-export function generateToolSchema(tool: ToolDefinition) {
+export function generateToolSchema(tool: ToolDefinition, locale: string = 'en') {
   const baseUrl = 'https://www.xfree.in';
+  const toolUrl = buildCanonical(`/tools/${tool.slug}`, locale);
 
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
+    '@id': `${toolUrl}#software`,
     name: `XFree ${tool.title}`,
     description: tool.shortDescription,
-    url: `${baseUrl}/tools/${tool.slug}`,
+    url: toolUrl,
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'Web',
     offers: {
@@ -39,7 +41,7 @@ export function generateToolSchema(tool: ToolDefinition) {
         url: `${baseUrl}/og-image.png`,
       },
     },
-    inLanguage: 'en-US',
+    inLanguage: locale,
     license: `${baseUrl}/terms`,
     isAccessibleForFree: true,
     screenshot: `${baseUrl}/og-image.png`,

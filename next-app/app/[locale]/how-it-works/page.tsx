@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Link } from '@/i18n/navigation';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'How It Works | XFree',
     description: 'Learn how XFree browser-based tools process your data locally for privacy-first execution.',
     alternates: buildAlternates('/how-it-works', locale),
+    ...(!hasEligibleTranslation('/how-it-works', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -25,7 +27,7 @@ export default function HowItWorksPage() {
           <header className="text-center space-y-4">
             <h1 className="text-3xl sm:text-4xl font-black text-cyber-text font-mono">How XFree Works</h1>
             <p className="text-cyber-muted max-w-2xl mx-auto">
-              Privacy-first architecture where all tool processing happens in your browser.
+              Most tools process input in your browser. IP, DNS, and WHOIS lookups use a server to query public services.
             </p>
           </header>
 
@@ -56,7 +58,7 @@ export default function HowItWorksPage() {
               </div>
               <h3 className="text-lg font-bold text-cyber-text">Local Processing</h3>
               <p className="text-cyber-muted text-sm">
-                JavaScript processes your data entirely within the browser sandbox.
+                Local tools process your input in the browser. Lookup tools query a server for external records.
               </p>
             </div>
 
@@ -66,7 +68,7 @@ export default function HowItWorksPage() {
               </div>
               <h3 className="text-lg font-bold text-cyber-text">Instant Results</h3>
               <p className="text-cyber-muted text-sm">
-                Output appears immediately without server communication.
+                Local results appear without a lookup request; IP, DNS, and WHOIS results require a network response.
               </p>
             </div>
           </div>
@@ -74,17 +76,14 @@ export default function HowItWorksPage() {
           <div className="cyber-card p-8 space-y-6">
             <h2 className="text-2xl font-bold text-cyber-text text-center">Local Mode</h2>
             <p className="text-cyber-muted text-sm text-center max-w-xl mx-auto">
-              Every published tool today runs in Local Mode - there is no
-              server-side or AI processing step to opt into. If that changes
-              for a future tool, the change will be disclosed on that
-              tool&apos;s own page before you use it, not buried in a
-              site-wide setting.
+              Most tools process data locally. IP Lookup, DNS Lookup, and WHOIS Lookup
+              send the value you enter to our server for the requested lookup.
+              See the <Link href="/privacy" className="text-cyber-glow hover:underline">privacy policy</Link> for the services queried.
             </p>
             <ul className="space-y-2 text-cyber-muted text-sm max-w-md mx-auto">
-              <li>✓ All processing in browser JavaScript</li>
-              <li>✓ Zero data transmission</li>
-              <li>✓ Works offline after initial load</li>
-              <li>✓ Complete privacy</li>
+              <li>✓ Local tools process input in browser JavaScript</li>
+              <li>✓ Lookup tools identify their server requests</li>
+              <li>✓ Local tools can work after the page loads</li>
             </ul>
           </div>
 
@@ -104,10 +103,17 @@ export default function HowItWorksPage() {
           <div className="cyber-card p-8 space-y-4 text-center">
             <h2 className="text-xl font-bold text-cyber-text">Try It Yourself</h2>
             <p className="text-cyber-muted text-sm">
-              The best way to see local processing in action is to open a tool and watch the network tab stay empty. Start with the{' '}
+              To inspect a local tool, open its page and watch whether input is sent in the network tab. Start with the{' '}
               <Link href="/tools/json-formatter" className="text-cyber-glow hover:underline">JSON Formatter</Link>, or read the{' '}
               <Link href="/guides" className="text-cyber-glow hover:underline">developer guides</Link> for a deeper technical walkthrough of specific tools.
             </p>
+            <div className="flex flex-wrap justify-center gap-3 text-sm">
+              <Link href="/tools/regex-tester" className="text-cyber-glow hover:underline">Test a regular expression</Link>
+              <Link href="/tools/jwt-decoder" className="text-cyber-glow hover:underline">Inspect a JWT locally</Link>
+              <Link href="/tools/xml-sitemap-generator" className="text-cyber-glow hover:underline">Generate an XML sitemap</Link>
+              <Link href="/tools/meta-tag-generator" className="text-cyber-glow hover:underline">Create meta tags</Link>
+              <Link href="/tools" className="text-cyber-glow hover:underline">Browse all 58 tools</Link>
+            </div>
           </div>
         </div>
       </main>
