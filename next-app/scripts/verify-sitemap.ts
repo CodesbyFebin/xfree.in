@@ -54,6 +54,24 @@ async function main() {
   check("Untranslated German SQL formatter omitted", !uniqueUrls.has(`${BASE_URL}/de/tools/sql-formatter`));
   check("German SQL omitted from reciprocal English alternates",
     !entries.find((entry) => entry.url === `${BASE_URL}/tools/sql-formatter`)?.alternates?.languages?.de);
+  // Verify every tool member declares exactly the same eligible cluster,
+  // including itself and x-default, rather than sampling one language pair.
+  const toolClusterErrors: string[] = [];
+  for (const tool of indexableTools) {
+    const path = `/tools/${tool.slug}`;
+    const eligible = eligibleLocalesForPath(path);
+    const expected = Object.fromEntries([
+      ["x-default", `${BASE_URL}${path}`],
+      ...eligible.map((locale) => [locale, `${BASE_URL}${locale === routing.defaultLocale ? "" : `/${locale}`}${path}`]),
+    ]);
+    for (const entry of entries.filter((item) => item.url.endsWith(path))) {
+      const actual = entry.alternates?.languages;
+      if (JSON.stringify(actual) !== JSON.stringify(expected) ||
+        !Object.values(expected).includes(entry.url)) toolClusterErrors.push(entry.url);
+    }
+  }
+  check("all tool hreflang clusters are reciprocal and self-referential",
+    toolClusterErrors.length === 0, toolClusterErrors.slice(0, 5).join(", "));
 
   const localeHomepages = routing.locales.map((l) => (l === routing.defaultLocale ? `${BASE_URL}/` : `${BASE_URL}/${l}`));
   const badTrailingSlash = localeHomepages.filter((h) => h !== `${BASE_URL}/` && h.endsWith("/"));
