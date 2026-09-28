@@ -23,6 +23,7 @@ const BASE_URL = "https://www.xfree.in";
 const auditedPaths = [
   ...TOOLS.filter((tool) => tool.indexable).map((tool) => `/tools/${tool.slug}`),
   '/guides',
+  '/about', '/how-it-works', '/privacy', '/terms', '/security',
   ...GUIDES.map((guide) => `/guides/${guide.slug}`),
   ...CATEGORIES.map((category) => `/categories/${category.slug}`),
 ];
@@ -65,6 +66,9 @@ async function main() {
     uniqueUrls.has(`${BASE_URL}/categories/developer-tools`) &&
     !uniqueUrls.has(`${BASE_URL}/de/guides/regex-cheat-sheet`) &&
     !uniqueUrls.has(`${BASE_URL}/de/categories/developer-tools`));
+  check("English brand, trust, and legal pages retained; untranslated variants omitted",
+    uniqueUrls.has(`${BASE_URL}/about`) && uniqueUrls.has(`${BASE_URL}/how-it-works`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/about`) && !uniqueUrls.has(`${BASE_URL}/de/privacy`));
   check("German SQL omitted from reciprocal English alternates",
     !entries.find((entry) => entry.url === `${BASE_URL}/tools/sql-formatter`)?.alternates?.languages?.de);
   // Verify every tool member declares exactly the same eligible cluster,
@@ -76,7 +80,7 @@ async function main() {
       ["x-default", `${BASE_URL}${path}`],
       ...eligible.map((locale) => [locale, `${BASE_URL}${locale === routing.defaultLocale ? "" : `/${locale}`}${path}`]),
     ]);
-    for (const entry of entries.filter((item) => item.url.endsWith(path))) {
+    for (const entry of entries.filter((item) => Object.values(expected).includes(item.url))) {
       const actual = entry.alternates?.languages;
       if (JSON.stringify(actual) !== JSON.stringify(expected) ||
         !Object.values(expected).includes(entry.url)) clusterErrors.push(entry.url);
