@@ -30,4 +30,8 @@ export const routing = defineRouting({
   // English stays unprefixed at "/" for continuity with the site's
   // existing indexed URLs; other locales are prefixed ("/es/...").
   localePrefix: 'as-needed',
+  // Next-intl's automatic HTTP Link header advertises every locale for
+  // every route, including untranslated noindex fallbacks. Page metadata
+  // already emits the eligible, reciprocal hreflang set in HTML instead.
+  alternateLinks: false,
 });
