@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { TOOLS } from '@/lib/data/tools';
 import { PILLARS } from '@/lib/data/pillars';
 

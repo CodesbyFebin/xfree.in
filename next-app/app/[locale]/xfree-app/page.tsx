@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 import { InstallButton } from './InstallButton';
 
@@ -12,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'XFree App - Installable PWA | XFree',
     description: 'Install XFree as a Progressive Web App on your device for quick access to free developer and SEO tools.',
     alternates: buildAlternates('/xfree-app', locale),
+    ...(!hasEligibleTranslation('/xfree-app', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

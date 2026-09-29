@@ -230,11 +230,11 @@
     "xml-sitemap-generator": {
       "title": "XML 站点地图生成器",
       "shortDescription": "为 Google 与 Bing SEO 生成 XML 站点地图。",
-      "longDescription": "免费的 XML 站点地图生成工具。创建符合 Google 规范的 XML 站点地图,支持优先级、changefreq 与 lastmod 日期。支持视频、图片与新闻站点地图。输出针对 SEO 优化。",
-      "explanation": "创建带有正确命名空间与可选优先级的 XML 站点地图。",
+      "longDescription": "根据输入的网址，使用标准命名空间创建基本的 XML 站点地图。提交前，请检查每个网址是否为规范网址并返回 200。",
+      "explanation": "根据您提供的网址，使用标准命名空间创建 XML 站点地图。",
       "howToUse": [
         "输入网址",
-        "设置优先级与 changefreq",
+        "检查生成的 XML",
         "下载 XML 站点地图"
       ],
       "faqs": []

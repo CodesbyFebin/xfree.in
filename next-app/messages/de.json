@@ -230,11 +230,11 @@
     "xml-sitemap-generator": {
       "title": "XML-Sitemap-Generator",
       "shortDescription": "Erstellen Sie XML-Sitemaps für Google- und Bing-SEO.",
-      "longDescription": "Kostenloser XML-Sitemap-Generator. Erstellen Sie Google-konforme XML-Sitemaps mit Prioritäten, changefreq und lastmod-Daten. Unterstützung für Video-, Bild- und News-Sitemaps. SEO-optimierte Ausgabe.",
-      "explanation": "Erstellt eine XML-Sitemap mit korrektem Namespace und optionalen Prioritäten.",
+      "longDescription": "Erstellen Sie aus den eingegebenen URLs eine einfache XML-Sitemap mit dem Standard-Namespace. Prüfen Sie vor dem Einreichen, ob jede URL kanonisch ist und 200 zurückgibt.",
+      "explanation": "Erstellt aus den angegebenen URLs eine XML-Sitemap mit dem Standard-Namespace.",
       "howToUse": [
         "URLs eingeben",
-        "Prioritäten und changefreq festlegen",
+        "Generiertes XML prüfen",
         "XML-Sitemap herunterladen"
       ],
       "faqs": []

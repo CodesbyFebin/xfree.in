@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { buildAlternates } from '@/lib/canonical';
 import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';

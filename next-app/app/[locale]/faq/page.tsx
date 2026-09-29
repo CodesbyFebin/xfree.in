@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'FAQ - Frequently Asked Questions | XFree',
     description: 'Answers to common questions about XFree tools, privacy, pricing, and usage.',
     alternates: buildAlternates('/faq', locale),
+    ...(!hasEligibleTranslation('/faq', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
