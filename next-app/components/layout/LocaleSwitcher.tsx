@@ -4,6 +4,7 @@ import { useLocale } from 'next-intl';
 import { usePathname } from '@/i18n/navigation';
 import { Link } from '@/i18n/navigation';
 import { locales, localeNames } from '@/i18n/routing';
+import { eligibleLocalesForPath } from '@/lib/i18n/translationEligibility';
 
 // Locale-aware Link with an explicit `locale` prop swaps only the locale
 // segment of the current URL, keeping the rest of the path (and its query
@@ -14,7 +15,7 @@ export function LocaleSwitcher({ className = 'hidden xl:flex items-center gap-1'
 
   return (
     <div className={className} aria-label="Language switcher">
-      {locales.map((locale) => (
+      {locales.filter((locale) => eligibleLocalesForPath(pathname).includes(locale)).map((locale) => (
         <Link
           key={locale}
           href={pathname}

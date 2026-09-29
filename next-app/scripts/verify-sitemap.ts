@@ -14,9 +14,21 @@
 import sitemap from "../app/sitemap";
 import { TOOLS } from "../lib/data/toolsWithSEO";
 import { PILLARS } from "../lib/data/pillars";
+import { GUIDES } from "../lib/data/guides";
+import { CATEGORIES } from "../lib/data/toolsWithSEO";
 import { routing } from "../i18n/routing";
+import { eligibleLocalesForPath } from "../lib/i18n/translationEligibility";
 
 const BASE_URL = "https://www.xfree.in";
+const auditedPaths = [
+  ...TOOLS.filter((tool) => tool.indexable).map((tool) => `/tools/${tool.slug}`),
+  '/guides',
+  '/about', '/how-it-works', '/privacy', '/terms', '/security',
+  ...GUIDES.map((guide) => `/guides/${guide.slug}`),
+  ...CATEGORIES.map((category) => `/categories/${category.slug}`),
+];
+const auditedLocaleGap = () => auditedPaths.reduce((gap, path) =>
+  gap + routing.locales.length - eligibleLocalesForPath(path).length, 0);
 
 const failures: string[] = [];
 function check(label: string, pass: boolean, detail?: string) {
@@ -35,17 +47,47 @@ async function main() {
 
   console.log("\n=== Structural checks (no network) ===");
 
-  check("total URL count is 1,510", entries.length === 1510, `got ${entries.length}`);
+  const expectedTotal = 1510 - auditedLocaleGap();
+  check(`total URL count matches eligible translations (${expectedTotal})`, entries.length === expectedTotal, `got ${entries.length}`);
   check("all URLs unique", uniqueUrls.size === urls.length, `${urls.length - uniqueUrls.size} duplicate(s)`);
 
   const indexableTools = TOOLS.filter((t) => t.indexable);
-  const expectedToolUrls = indexableTools.length * routing.locales.length;
+  const expectedToolUrls = indexableTools.reduce((count, tool) => count + eligibleLocalesForPath(`/tools/${tool.slug}`).length, 0);
   const actualToolUrls = urls.filter((u) => u.includes("/tools/")).length;
   check(
-    `58 tool records × ${routing.locales.length} locales = ${expectedToolUrls} tool URLs`,
+    `58 tool records across eligible locales = ${expectedToolUrls} tool URLs`,
     indexableTools.length === 58 && actualToolUrls === expectedToolUrls,
     `indexable tools=${indexableTools.length}, tool URLs=${actualToolUrls}, expected=${expectedToolUrls}`,
   );
+  check("German JSON formatter included", uniqueUrls.has(`${BASE_URL}/de/tools/json-formatter`));
+  check("Untranslated German SQL formatter omitted", !uniqueUrls.has(`${BASE_URL}/de/tools/sql-formatter`));
+  check("English guides and categories retained; untranslated variants omitted",
+    uniqueUrls.has(`${BASE_URL}/guides/regex-cheat-sheet`) &&
+    uniqueUrls.has(`${BASE_URL}/categories/developer-tools`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/guides/regex-cheat-sheet`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/categories/developer-tools`));
+  check("English brand, trust, and legal pages retained; untranslated variants omitted",
+    uniqueUrls.has(`${BASE_URL}/about`) && uniqueUrls.has(`${BASE_URL}/how-it-works`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/about`) && !uniqueUrls.has(`${BASE_URL}/de/privacy`));
+  check("German SQL omitted from reciprocal English alternates",
+    !entries.find((entry) => entry.url === `${BASE_URL}/tools/sql-formatter`)?.alternates?.languages?.de);
+  // Verify every tool member declares exactly the same eligible cluster,
+  // including itself and x-default, rather than sampling one language pair.
+  const clusterErrors: string[] = [];
+  for (const path of auditedPaths) {
+    const eligible = eligibleLocalesForPath(path);
+    const expected = Object.fromEntries([
+      ["x-default", `${BASE_URL}${path}`],
+      ...eligible.map((locale) => [locale, `${BASE_URL}${locale === routing.defaultLocale ? "" : `/${locale}`}${path}`]),
+    ]);
+    for (const entry of entries.filter((item) => Object.values(expected).includes(item.url))) {
+      const actual = entry.alternates?.languages;
+      if (JSON.stringify(actual) !== JSON.stringify(expected) ||
+        !Object.values(expected).includes(entry.url)) clusterErrors.push(entry.url);
+    }
+  }
+  check("all audited hreflang clusters are reciprocal and self-referential",
+    clusterErrors.length === 0, clusterErrors.slice(0, 5).join(", "));
 
   const localeHomepages = routing.locales.map((l) => (l === routing.defaultLocale ? `${BASE_URL}/` : `${BASE_URL}/${l}`));
   const badTrailingSlash = localeHomepages.filter((h) => h !== `${BASE_URL}/` && h.endsWith("/"));

@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Link } from '@/i18n/navigation';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'Privacy Policy | XFree',
     description: 'XFree privacy policy - how we handle your data when using our free browser-based tools.',
     alternates: buildAlternates('/privacy', locale),
+    ...(!hasEligibleTranslation('/privacy', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

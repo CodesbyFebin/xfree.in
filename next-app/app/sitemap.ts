@@ -3,6 +3,7 @@ import { TOOLS, CATEGORIES } from '@/lib/data/toolsWithSEO';
 import { PILLARS } from '@/lib/data/pillars';
 import { GUIDES } from '@/lib/data/guides';
 import { routing } from '@/i18n/routing';
+import { eligibleLocalesForPath } from '@/lib/i18n/translationEligibility';
 
 const BASE_URL = 'https://www.xfree.in';
 
@@ -31,12 +32,13 @@ function localizedUrl(path: string, locale: string): string {
 // direction: Google has said for years it doesn't use either for ranking
 // or recrawl scheduling, so they were unused weight, not real signal.
 function localizedEntries(path: string, lastModified?: string): MetadataRoute.Sitemap {
+  const eligibleLocales = eligibleLocalesForPath(path);
   const languages: Record<string, string> = { 'x-default': localizedUrl(path, routing.defaultLocale) };
-  for (const locale of routing.locales) {
+  for (const locale of eligibleLocales) {
     languages[locale] = localizedUrl(path, locale);
   }
 
-  return routing.locales.map((locale) => ({
+  return eligibleLocales.map((locale) => ({
     url: localizedUrl(path, locale),
     ...(lastModified ? { lastModified } : {}),
     alternates: { languages },

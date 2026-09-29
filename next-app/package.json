@@ -14,7 +14,9 @@
     "verify:tool-matching": "tsx scripts/verify-tool-matching.ts",
     "verify:paid-security": "tsx scripts/verify-paid-endpoint-security.ts",
     "verify:seo-content": "tsx scripts/verify-seo-content.ts",
-    "test": "playwright test"
+    "test": "playwright test",
+    "generate:translation-manifest": "node --import tsx scripts/generate-translation-manifest.ts",
+    "prebuild": "npm run generate:translation-manifest"
   },
   "dependencies": {
     "@types/dompurify": "^3.0.5",

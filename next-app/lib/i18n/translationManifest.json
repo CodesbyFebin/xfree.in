@@ -1,0 +1,290 @@
+{
+  "/guides": [
+    "en"
+  ],
+  "/about": [
+    "en"
+  ],
+  "/how-it-works": [
+    "en"
+  ],
+  "/privacy": [
+    "en"
+  ],
+  "/terms": [
+    "en"
+  ],
+  "/security": [
+    "en"
+  ],
+  "/guides/regex-cheat-sheet": [
+    "en"
+  ],
+  "/guides/cron-expression-examples": [
+    "en"
+  ],
+  "/guides/common-json-formatting-errors": [
+    "en"
+  ],
+  "/guides/canonical-tag-vs-301-redirect": [
+    "en"
+  ],
+  "/categories/seo-url-tools": [
+    "en"
+  ],
+  "/categories/developer-tools": [
+    "en"
+  ],
+  "/categories/ai-tools": [
+    "en"
+  ],
+  "/categories/text-tools": [
+    "en"
+  ],
+  "/categories/converters": [
+    "en"
+  ],
+  "/categories/generators": [
+    "en"
+  ],
+  "/categories/validators": [
+    "en"
+  ],
+  "/categories/security-tools": [
+    "en"
+  ],
+  "/categories/media-docs": [
+    "en"
+  ],
+  "/categories/business-tools": [
+    "en"
+  ],
+  "/categories/image-tools": [
+    "en"
+  ],
+  "/categories/video-tools": [
+    "en"
+  ],
+  "/categories/pdf-tools": [
+    "en"
+  ],
+  "/tools/json-formatter": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "ja",
+    "hi",
+    "ar",
+    "zh",
+    "ta",
+    "ml"
+  ],
+  "/tools/regex-tester": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "ja",
+    "hi",
+    "ar",
+    "zh",
+    "ta",
+    "ml"
+  ],
+  "/tools/base64-encode": [
+    "en"
+  ],
+  "/tools/base64-decode": [
+    "en"
+  ],
+  "/tools/url-encode": [
+    "en"
+  ],
+  "/tools/url-decode": [
+    "en"
+  ],
+  "/tools/hash-generator": [
+    "en"
+  ],
+  "/tools/password-generator": [
+    "en"
+  ],
+  "/tools/uuid-generator": [
+    "en"
+  ],
+  "/tools/jwt-decoder": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "ja",
+    "hi",
+    "ar",
+    "zh",
+    "ta",
+    "ml"
+  ],
+  "/tools/xml-sitemap-generator": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "ja",
+    "hi",
+    "ar",
+    "zh",
+    "ta",
+    "ml"
+  ],
+  "/tools/robots-txt-generator": [
+    "en"
+  ],
+  "/tools/meta-tag-generator": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "ja",
+    "hi",
+    "ar",
+    "zh",
+    "ta",
+    "ml"
+  ],
+  "/tools/cron-generator": [
+    "en"
+  ],
+  "/tools/sql-formatter": [
+    "en"
+  ],
+  "/tools/html-minifier": [
+    "en"
+  ],
+  "/tools/css-minifier": [
+    "en"
+  ],
+  "/tools/word-counter": [
+    "en"
+  ],
+  "/tools/slug-generator": [
+    "en"
+  ],
+  "/tools/qr-code-generator": [
+    "en"
+  ],
+  "/tools/email-validator": [
+    "en"
+  ],
+  "/tools/json-to-csv": [
+    "en"
+  ],
+  "/tools/csv-to-json": [
+    "en"
+  ],
+  "/tools/json-minify": [
+    "en"
+  ],
+  "/tools/json-validator": [
+    "en"
+  ],
+  "/tools/json-to-yaml": [
+    "en"
+  ],
+  "/tools/yaml-to-json": [
+    "en"
+  ],
+  "/tools/regex-builder": [
+    "en"
+  ],
+  "/tools/regex-explainer": [
+    "en"
+  ],
+  "/tools/sha256-hash": [
+    "en"
+  ],
+  "/tools/md5-hash": [
+    "en"
+  ],
+  "/tools/cron-parser": [
+    "en"
+  ],
+  "/tools/jwt-encoder": [
+    "en"
+  ],
+  "/tools/utm-builder": [
+    "en"
+  ],
+  "/tools/bulk-url-extractor": [
+    "en"
+  ],
+  "/tools/js-minifier": [
+    "en"
+  ],
+  "/tools/yaml-validator": [
+    "en"
+  ],
+  "/tools/xml-validator": [
+    "en"
+  ],
+  "/tools/toml-validator": [
+    "en"
+  ],
+  "/tools/diff-tool": [
+    "en"
+  ],
+  "/tools/case-converter": [
+    "en"
+  ],
+  "/tools/markdown-editor": [
+    "en"
+  ],
+  "/tools/table-generator": [
+    "en"
+  ],
+  "/tools/color-converter": [
+    "en"
+  ],
+  "/tools/color-palette": [
+    "en"
+  ],
+  "/tools/barcode-generator": [
+    "en"
+  ],
+  "/tools/random-string": [
+    "en"
+  ],
+  "/tools/random-number": [
+    "en"
+  ],
+  "/tools/random-color": [
+    "en"
+  ],
+  "/tools/credit-card-validator": [
+    "en"
+  ],
+  "/tools/phone-validator": [
+    "en"
+  ],
+  "/tools/url-validator": [
+    "en"
+  ],
+  "/tools/ip-lookup": [
+    "en"
+  ],
+  "/tools/dns-lookup": [
+    "en"
+  ],
+  "/tools/whois-lookup": [
+    "en"
+  ],
+  "/tools/hmac-generator": [
+    "en"
+  ],
+  "/tools/hex-to-rgb": [
+    "en"
+  ],
+  "/tools/rgb-to-hex": [
+    "en"
+  ]
+}

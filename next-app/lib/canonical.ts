@@ -1,4 +1,6 @@
 import { routing, type Locale } from '@/i18n/routing';
+import { eligibleLocalesForPath } from '@/lib/i18n/translationEligibility';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 
 const BASE_URL = 'https://www.xfree.in';
 
@@ -26,7 +28,7 @@ export function buildCanonical(path: string, locale: string = routing.defaultLoc
  */
 export function buildLanguageAlternates(path: string): Record<string, string> {
   const languages: Record<string, string> = { 'x-default': urlFor(path, routing.defaultLocale) };
-  for (const locale of routing.locales) {
+  for (const locale of eligibleLocalesForPath(path)) {
     languages[locale] = urlFor(path, locale);
   }
   return languages;
@@ -34,6 +36,9 @@ export function buildLanguageAlternates(path: string): Record<string, string> {
 
 /** Canonical + full hreflang alternates for `path` under `locale`, ready to spread into `alternates`. */
 export function buildAlternates(path: string, locale: Locale) {
+  if (!hasEligibleTranslation(path, locale)) {
+    return { canonical: buildCanonical(path), languages: {} };
+  }
   return {
     canonical: buildCanonical(path, locale),
     languages: buildLanguageAlternates(path),
