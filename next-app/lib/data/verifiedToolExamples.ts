@@ -34,4 +34,24 @@ export const VERIFIED_TOOL_EXAMPLES: Record<string, {
     outputLabel: 'OUTPUT EXCERPT:',
     limitation: 'The generated HTML is a starting point. Preview the real page and escape special characters in values before inserting them into HTML.',
   },
+  'base64-encode': {
+    input: 'Hello World',
+    output: 'SGVsbG8gV29ybGQ=',
+    limitation: 'This widget uses btoa on a text string. It does not accept files, and non-Latin-1 Unicode characters need UTF-8 conversion before encoding.',
+  },
+  'base64-decode': {
+    input: 'SGVsbG8gV29ybGQ=',
+    output: 'Hello World',
+    limitation: 'Base64 is reversible encoding, not encryption. The widget uses atob and does not interpret decoded binary data as a file.',
+  },
+  'url-encode': {
+    input: 'Hello World & Test?',
+    output: 'Hello%20World%20%26%20Test%3F',
+    limitation: 'This uses encodeURIComponent for a URI component, not a complete URL; encoding an entire URL also escapes its separators.',
+  },
+  'url-decode': {
+    input: 'Hello%20World%20%26%20Test%3F',
+    output: 'Hello World & Test?',
+    limitation: 'This uses decodeURIComponent; malformed percent sequences produce an error, and plus signs are not converted to spaces.',
+  },
 };
