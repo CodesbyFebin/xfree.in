@@ -231,10 +231,10 @@
       "title": "Générateur de Sitemap XML",
       "shortDescription": "Générez des sitemaps XML pour le référencement Google et Bing.",
       "longDescription": "Générateur de sitemap XML gratuit. Créez des sitemaps XML conformes à Google avec priorités, changefreq et dates lastmod. Prise en charge des sitemaps vidéo, image et actualités. Sortie optimisée pour le SEO.",
-      "explanation": "Crée un sitemap XML avec l'espace de noms approprié et des priorités facultatives.",
+      "explanation": "Crée un sitemap XML avec l’espace de noms standard à partir des URL fournies.",
       "howToUse": [
         "Saisissez les URLs",
-        "Définissez les priorités et changefreq",
+        "Vérifiez le XML généré",
         "Téléchargez le sitemap XML"
       ],
       "faqs": []

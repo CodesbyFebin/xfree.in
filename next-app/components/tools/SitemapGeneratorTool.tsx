@@ -5,44 +5,41 @@ import { Copy, Check, Download, Plus, Trash2 } from 'lucide-react';
 
 interface UrlEntry {
   url: string;
-  priority: '0.0' | '0.3' | '0.5' | '0.7' | '1.0';
-  changefreq: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 }
 
 export function SitemapGeneratorTool() {
   const [urls, setUrls] = useState<UrlEntry[]>([
-    { url: 'https://example.com/', priority: '1.0', changefreq: 'daily' },
+    { url: 'https://example.com/' },
   ]);
   const [baseUrl, setBaseUrl] = useState('https://example.com');
   const [copied, setCopied] = useState(false);
 
   const addUrl = () => {
-    setUrls([...urls, { url: `${baseUrl}/`, priority: '0.5', changefreq: 'weekly' }]);
+    setUrls([...urls, { url: `${baseUrl}/` }]);
   };
 
   const removeUrl = (index: number) => {
     setUrls(urls.filter((_, i) => i !== index));
   };
 
-  const updateUrl = (index: number, field: keyof UrlEntry, value: string) => {
-    const updated = [...urls];
-    (updated[index] as any)[field] = value;
-    setUrls(updated);
+  const updateUrl = (index: number, value: string) => {
+    setUrls(urls.map((entry, i) => i === index ? { url: value } : entry));
   };
 
+  const escapeXml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+
   const generateSitemap = useCallback(() => {
-    const urlElements = urls
+    const urlElements = urls.filter((entry) => entry.url.trim())
       .map(
         (entry) => `  <url>
-    <loc>${entry.url}</loc>
-    <changefreq>${entry.changefreq}</changefreq>
-    <priority>${entry.priority}</priority>
+    <loc>${escapeXml(entry.url.trim())}</loc>
   </url>`
       )
       .join('\n');
 
     return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urlElements}
 </urlset>`;
   }, [urls]);
@@ -98,34 +95,10 @@ ${urlElements}
               <input
                 type="url"
                 value={entry.url}
-                onChange={(e) => updateUrl(i, 'url', e.target.value)}
+                onChange={(e) => updateUrl(i, e.target.value)}
                 className="flex-1 bg-transparent border-none text-xs font-mono text-cyber-glow focus:outline-none"
                 placeholder="https://example.com/page"
               />
-              <select
-                value={entry.priority}
-                onChange={(e) => updateUrl(i, 'priority', e.target.value)}
-                className="bg-cyber-surface border border-cyber-border rounded px-2 py-1 text-xs font-mono text-cyber-muted"
-              >
-                <option value="0.0">0.0</option>
-                <option value="0.3">0.3</option>
-                <option value="0.5">0.5</option>
-                <option value="0.7">0.7</option>
-                <option value="1.0">1.0</option>
-              </select>
-              <select
-                value={entry.changefreq}
-                onChange={(e) => updateUrl(i, 'changefreq', e.target.value)}
-                className="bg-cyber-surface border border-cyber-border rounded px-2 py-1 text-xs font-mono text-cyber-muted"
-              >
-                <option value="always">always</option>
-                <option value="hourly">hourly</option>
-                <option value="daily">daily</option>
-                <option value="weekly">weekly</option>
-                <option value="monthly">monthly</option>
-                <option value="yearly">yearly</option>
-                <option value="never">never</option>
-              </select>
               <button
                 onClick={() => removeUrl(i)}
                 className="text-cyber-muted hover:text-rose-400 transition-colors"
@@ -166,8 +139,7 @@ ${urlElements}
       </div>
 
       <div className="text-xs text-cyber-muted">
-        <p>• Priority: 1.0 = highest importance, 0.0 = lowest</p>
-        <p>• changefreq: How often the page is likely to change</p>
+        <p>Include canonical URLs that return 200. Review the generated file before submitting it to a search engine.</p>
       </div>
     </div>
   );

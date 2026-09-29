@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { buildAlternates } from '@/lib/canonical';
 import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 const ABOUT_FAQS = [
   {
     q: 'Who is XFree for?',
-    a: 'Developers debugging JSON or regex, SEO practitioners building sitemaps and meta tags, and anyone who needs a quick encode, hash, or format done without installing anything or sending data to a server they don\'t control.',
+    a: 'Developers debugging JSON or regex, SEO practitioners building sitemaps and meta tags, and anyone who needs a quick encode, hash, or format without installing anything. Most tools process input locally; DNS, IP, WHOIS, and some AI workflows need a server.',
   },
   {
     q: 'Are the tool pages ad-free?',
@@ -34,7 +34,7 @@ const ABOUT_FAQS = [
   },
   {
     q: 'How is XFree funded?',
-    a: 'Through minimal, clearly-labeled advertising on the homepage and guide pages, not through selling user data - there is none to sell, since tool processing happens in your browser and is never transmitted.',
+    a: 'Through advertising on the homepage and guide pages. Most tools process input in your browser; tools that need a network service disclose that on their pages.',
   },
 ];
 
@@ -55,12 +55,15 @@ export default function AboutPage() {
             <p className="text-cyber-muted text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
               A small, focused platform of free browser-based developer, SEO, and AI micro-tools.
             </p>
+            <p className="text-cyber-muted text-sm max-w-2xl mx-auto leading-relaxed">
+              XFree.in is the developer tools platform at www.xfree.in. It is separate from unrelated websites and products that share the name XFree.
+            </p>
           </div>
 
           <div className="space-y-6 text-cyber-muted text-sm sm:text-base leading-relaxed cyber-card p-8">
             <h2 className="text-2xl font-bold text-cyber-text">Our Mission</h2>
             <p>
-              We created XFree.in because existing online converter and formatting sites are slow, cluttered with invasive ads, and upload sensitive user code to unknown backend servers.
+              We created XFree.in to offer quick, focused developer and SEO tasks in one place, with local processing wherever the task permits it.
             </p>
             <p>
               XFree.in delivers a curated catalog of {indexableCount} single-purpose micro-tools, organized into {PILLARS.length} topic pillars, that execute 100% locally in browser memory wherever the operation allows it. No registration required, no hidden paywalls, and zero latency.
@@ -94,7 +97,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-cyber-text mb-1">Zero Latency</h3>
-                  <p className="text-sm">All tools run instantly in your browser. No server round-trips, no loading spinners.</p>
+                  <p className="text-sm">Local tools respond in your browser; DNS, IP, WHOIS, and some AI workflows require network requests.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

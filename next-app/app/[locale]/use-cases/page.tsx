@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { TOOLS } from '@/lib/data/tools';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
@@ -12,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'Use Cases | XFree',
     description: 'See how developers, SEO professionals, and creators use XFree tools.',
     alternates: buildAlternates('/use-cases', locale),
+    ...(!hasEligibleTranslation('/use-cases', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

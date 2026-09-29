@@ -1,8 +1,23 @@
 {
+  "/pillars": [
+    "en"
+  ],
+  "/tools": [
+    "en"
+  ],
   "/guides": [
     "en"
   ],
   "/about": [
+    "en"
+  ],
+  "/blog": [
+    "en"
+  ],
+  "/contact": [
+    "en"
+  ],
+  "/faq": [
     "en"
   ],
   "/how-it-works": [
@@ -15,6 +30,33 @@
     "en"
   ],
   "/security": [
+    "en"
+  ],
+  "/roadmap": [
+    "en"
+  ],
+  "/use-cases": [
+    "en"
+  ],
+  "/xfree-app": [
+    "en"
+  ],
+  "/updates": [
+    "en"
+  ],
+  "/updates/ai": [
+    "en"
+  ],
+  "/updates/web-development": [
+    "en"
+  ],
+  "/updates/open-source": [
+    "en"
+  ],
+  "/updates/security": [
+    "en"
+  ],
+  "/updates/browser": [
     "en"
   ],
   "/guides/regex-cheat-sheet": [
@@ -66,6 +108,336 @@
     "en"
   ],
   "/categories/pdf-tools": [
+    "en"
+  ],
+  "/pillars/json-data-tools": [
+    "en"
+  ],
+  "/pillars/dev-tools/json-data-tools": [
+    "en"
+  ],
+  "/pillars/regex-pattern-tools": [
+    "en"
+  ],
+  "/pillars/dev-tools/regex-pattern-tools": [
+    "en"
+  ],
+  "/pillars/encoding-conversion-tools": [
+    "en"
+  ],
+  "/pillars/dev-tools/encoding-conversion-tools": [
+    "en"
+  ],
+  "/pillars/code-formatters": [
+    "en"
+  ],
+  "/pillars/dev-tools/code-formatters": [
+    "en"
+  ],
+  "/pillars/validators-debuggers": [
+    "en"
+  ],
+  "/pillars/dev-tools/validators-debuggers": [
+    "en"
+  ],
+  "/pillars/api-development": [
+    "en"
+  ],
+  "/pillars/dev-tools/api-development": [
+    "en"
+  ],
+  "/pillars/database-tools": [
+    "en"
+  ],
+  "/pillars/dev-tools/database-tools": [
+    "en"
+  ],
+  "/pillars/version-control": [
+    "en"
+  ],
+  "/pillars/dev-tools/version-control": [
+    "en"
+  ],
+  "/pillars/shell-command-tools": [
+    "en"
+  ],
+  "/pillars/dev-tools/shell-command-tools": [
+    "en"
+  ],
+  "/pillars/sitemap-generators": [
+    "en"
+  ],
+  "/pillars/web-seo/sitemap-generators": [
+    "en"
+  ],
+  "/pillars/meta-tag-tools": [
+    "en"
+  ],
+  "/pillars/web-seo/meta-tag-tools": [
+    "en"
+  ],
+  "/pillars/schema-markup-tools": [
+    "en"
+  ],
+  "/pillars/web-seo/schema-markup-tools": [
+    "en"
+  ],
+  "/pillars/seo-audit-tools": [
+    "en"
+  ],
+  "/pillars/web-seo/seo-audit-tools": [
+    "en"
+  ],
+  "/pillars/performance-tools": [
+    "en"
+  ],
+  "/pillars/web-seo/performance-tools": [
+    "en"
+  ],
+  "/pillars/url-analysis-tools": [
+    "en"
+  ],
+  "/pillars/web-seo/url-analysis-tools": [
+    "en"
+  ],
+  "/pillars/accessibility-tools": [
+    "en"
+  ],
+  "/pillars/web-seo/accessibility-tools": [
+    "en"
+  ],
+  "/pillars/prompt-engineering": [
+    "en"
+  ],
+  "/pillars/ai-auto/prompt-engineering": [
+    "en"
+  ],
+  "/pillars/llm-utilities": [
+    "en"
+  ],
+  "/pillars/ai-auto/llm-utilities": [
+    "en"
+  ],
+  "/pillars/rag-tools": [
+    "en"
+  ],
+  "/pillars/ai-auto/rag-tools": [
+    "en"
+  ],
+  "/pillars/ai-agent-tools": [
+    "en"
+  ],
+  "/pillars/ai-auto/ai-agent-tools": [
+    "en"
+  ],
+  "/pillars/content-generation": [
+    "en"
+  ],
+  "/pillars/ai-auto/content-generation": [
+    "en"
+  ],
+  "/pillars/pdf-conversion-tools": [
+    "en"
+  ],
+  "/pillars/media-docs/pdf-conversion-tools": [
+    "en"
+  ],
+  "/pillars/pdf-editing-tools": [
+    "en"
+  ],
+  "/pillars/media-docs/pdf-editing-tools": [
+    "en"
+  ],
+  "/pillars/document-converters": [
+    "en"
+  ],
+  "/pillars/media-docs/document-converters": [
+    "en"
+  ],
+  "/pillars/markdown-tools": [
+    "en"
+  ],
+  "/pillars/media-docs/markdown-tools": [
+    "en"
+  ],
+  "/pillars/hash-generator-tools": [
+    "en"
+  ],
+  "/pillars/security/hash-generator-tools": [
+    "en"
+  ],
+  "/pillars/password-tools": [
+    "en"
+  ],
+  "/pillars/security/password-tools": [
+    "en"
+  ],
+  "/pillars/token-decoder-tools": [
+    "en"
+  ],
+  "/pillars/security/token-decoder-tools": [
+    "en"
+  ],
+  "/pillars/encryption-tools": [
+    "en"
+  ],
+  "/pillars/security/encryption-tools": [
+    "en"
+  ],
+  "/pillars/ssl-certificate-tools": [
+    "en"
+  ],
+  "/pillars/security/ssl-certificate-tools": [
+    "en"
+  ],
+  "/pillars/dns-lookup-tools": [
+    "en"
+  ],
+  "/pillars/security/dns-lookup-tools": [
+    "en"
+  ],
+  "/pillars/text-analysis-tools": [
+    "en"
+  ],
+  "/pillars/business/text-analysis-tools": [
+    "en"
+  ],
+  "/pillars/case-conversion-tools": [
+    "en"
+  ],
+  "/pillars/business/case-conversion-tools": [
+    "en"
+  ],
+  "/pillars/list-utilities": [
+    "en"
+  ],
+  "/pillars/business/list-utilities": [
+    "en"
+  ],
+  "/pillars/calculator-tools": [
+    "en"
+  ],
+  "/pillars/business/calculator-tools": [
+    "en"
+  ],
+  "/pillars/generator-tools": [
+    "en"
+  ],
+  "/pillars/business/generator-tools": [
+    "en"
+  ],
+  "/pillars/pdf-extract-tools": [
+    "en"
+  ],
+  "/pillars/pdf-tools/pdf-extract-tools": [
+    "en"
+  ],
+  "/pillars/pdf-protect-tools": [
+    "en"
+  ],
+  "/pillars/pdf-tools/pdf-protect-tools": [
+    "en"
+  ],
+  "/pillars/image-conversion-tools": [
+    "en"
+  ],
+  "/pillars/image-tools/image-conversion-tools": [
+    "en"
+  ],
+  "/pillars/image-optimization-tools": [
+    "en"
+  ],
+  "/pillars/image-tools/image-optimization-tools": [
+    "en"
+  ],
+  "/pillars/image-analysis-tools": [
+    "en"
+  ],
+  "/pillars/image-tools/image-analysis-tools": [
+    "en"
+  ],
+  "/pillars/video-conversion-tools": [
+    "en"
+  ],
+  "/pillars/video-tools/video-conversion-tools": [
+    "en"
+  ],
+  "/pillars/video-editing-tools": [
+    "en"
+  ],
+  "/pillars/video-tools/video-editing-tools": [
+    "en"
+  ],
+  "/pillars/gif-creation-tools": [
+    "en"
+  ],
+  "/pillars/video-tools/gif-creation-tools": [
+    "en"
+  ],
+  "/pillars/diff-comparison-tools": [
+    "en"
+  ],
+  "/pillars/text-tools/diff-comparison-tools": [
+    "en"
+  ],
+  "/pillars/text-cleaning-tools": [
+    "en"
+  ],
+  "/pillars/text-tools/text-cleaning-tools": [
+    "en"
+  ],
+  "/pillars/text-extraction-tools": [
+    "en"
+  ],
+  "/pillars/text-tools/text-extraction-tools": [
+    "en"
+  ],
+  "/pillars/text-translation-tools": [
+    "en"
+  ],
+  "/pillars/text-tools/text-translation-tools": [
+    "en"
+  ],
+  "/pillars/color-tools": [
+    "en"
+  ],
+  "/pillars/design-uiux/color-tools": [
+    "en"
+  ],
+  "/pillars/typography-tools": [
+    "en"
+  ],
+  "/pillars/design-uiux/typography-tools": [
+    "en"
+  ],
+  "/pillars/mockup-wireframe-tools": [
+    "en"
+  ],
+  "/pillars/design-uiux/mockup-wireframe-tools": [
+    "en"
+  ],
+  "/pillars/task-automation-tools": [
+    "en"
+  ],
+  "/pillars/productivity/task-automation-tools": [
+    "en"
+  ],
+  "/pillars/note-taking-tools": [
+    "en"
+  ],
+  "/pillars/productivity/note-taking-tools": [
+    "en"
+  ],
+  "/pillars/meeting-productivity-tools": [
+    "en"
+  ],
+  "/pillars/productivity/meeting-productivity-tools": [
+    "en"
+  ],
+  "/pillars/data-visualization-tools": [
+    "en"
+  ],
+  "/pillars/productivity/data-visualization-tools": [
     "en"
   ],
   "/tools/json-formatter": [

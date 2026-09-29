@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/i18n/navigation';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Menu, X } from 'lucide-react';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';

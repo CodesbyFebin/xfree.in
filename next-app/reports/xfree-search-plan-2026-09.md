@@ -1,5 +1,7 @@
 # XFree.in: search discovery and entity plan
 
+> Historical planning snapshot. PR #8 subsequently deployed the stacked release; see [current follow-ups](xfree-search-followups-2026-09-29.md) for verified release state. The 58 provisional briefs below remain candidate copy.
+
 Date: 2026-09-29. Source: production `CodesbyFebin/xfree.in`, supplied 90-day Search Console exports, and a source/build review. This is a working specification, not a claim that the draft PRs have deployed or that search ranking is guaranteed.
 
 ## Evidence and corrections
