@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import type { Locale } from '@/i18n/routing';
 import { ContactForm } from './ContactForm';
 
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'Contact Support & Feedback | XFree',
     description: 'Have a tool request, bug report, or partnership inquiry? Reach out to the XFree team directly.',
     alternates: buildAlternates('/contact', locale),
+    ...(!hasEligibleTranslation('/contact', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

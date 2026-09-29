@@ -11,24 +11,24 @@
 // of every sitemap URL on every run would be slow and flaky for a
 // routine gate; extend SAMPLE_SLUGS below if a specific route needs
 // closer, repeated watching.
-import sitemap from "../app/sitemap";
+import sitemap from "../lib/seo/sitemapEntries";
+import { entriesForShard, SHARDS, sitemapIndex, sitemapShard } from "../lib/seo/sitemapXml";
 import { TOOLS } from "../lib/data/toolsWithSEO";
 import { PILLARS } from "../lib/data/pillars";
 import { GUIDES } from "../lib/data/guides";
 import { CATEGORIES } from "../lib/data/toolsWithSEO";
 import { routing } from "../i18n/routing";
 import { eligibleLocalesForPath } from "../lib/i18n/translationEligibility";
+import { STATIC_PATHS } from "../lib/i18n/routeFamilies";
 
 const BASE_URL = "https://www.xfree.in";
 const auditedPaths = [
+  ...STATIC_PATHS.filter((path) => path !== '/'),
   ...TOOLS.filter((tool) => tool.indexable).map((tool) => `/tools/${tool.slug}`),
-  '/guides',
-  '/about', '/how-it-works', '/privacy', '/terms', '/security',
+  ...PILLARS.map((pillar) => `/pillars/${pillar.slug}`),
   ...GUIDES.map((guide) => `/guides/${guide.slug}`),
   ...CATEGORIES.map((category) => `/categories/${category.slug}`),
 ];
-const auditedLocaleGap = () => auditedPaths.reduce((gap, path) =>
-  gap + routing.locales.length - eligibleLocalesForPath(path).length, 0);
 
 const failures: string[] = [];
 function check(label: string, pass: boolean, detail?: string) {
@@ -47,9 +47,20 @@ async function main() {
 
   console.log("\n=== Structural checks (no network) ===");
 
-  const expectedTotal = 1510 - auditedLocaleGap();
+  const expectedTotal = routing.locales.length + auditedPaths.reduce((sum, path) =>
+    sum + eligibleLocalesForPath(path).length, 0);
   check(`total URL count matches eligible translations (${expectedTotal})`, entries.length === expectedTotal, `got ${entries.length}`);
   check("all URLs unique", uniqueUrls.size === urls.length, `${urls.length - uniqueUrls.size} duplicate(s)`);
+  const shardEntries = SHARDS.flatMap((shard) => entriesForShard(shard));
+  check("sitemap shards cover every eligible URL once",
+    shardEntries.length === entries.length && new Set(shardEntries.map((entry) => entry.url)).size === entries.length,
+    `shards=${shardEntries.length}, eligible=${entries.length}`);
+  const indexXml = await sitemapIndex().text();
+  check("sitemap index names all family shards", SHARDS.every((shard) => indexXml.includes(`/sitemap-${shard}.xml`)));
+  const toolsXml = await sitemapShard('tools-locales').text();
+  check("localized shard carries hreflang self and x-default",
+    toolsXml.includes('hreflang="de" href="https://www.xfree.in/de/tools/json-formatter"') &&
+    toolsXml.includes('hreflang="x-default" href="https://www.xfree.in/tools/json-formatter"'));
 
   const indexableTools = TOOLS.filter((t) => t.indexable);
   const expectedToolUrls = indexableTools.reduce((count, tool) => count + eligibleLocalesForPath(`/tools/${tool.slug}`).length, 0);
@@ -71,6 +82,9 @@ async function main() {
     !uniqueUrls.has(`${BASE_URL}/de/about`) && !uniqueUrls.has(`${BASE_URL}/de/privacy`));
   check("German SQL omitted from reciprocal English alternates",
     !entries.find((entry) => entry.url === `${BASE_URL}/tools/sql-formatter`)?.alternates?.languages?.de);
+  check("English pillars retained; untranslated pillar variants omitted",
+    uniqueUrls.has(`${BASE_URL}/pillars/${PILLARS[0].slug}`) &&
+    !uniqueUrls.has(`${BASE_URL}/de/pillars/${PILLARS[0].slug}`));
   // Verify every tool member declares exactly the same eligible cluster,
   // including itself and x-default, rather than sampling one language pair.
   const clusterErrors: string[] = [];
@@ -107,6 +121,12 @@ async function main() {
   ];
   const legacyMatches = urls.filter((u) => legacyPatterns.some(([, pattern]) => pattern.test(u)));
   check("no Vercel, app, query, draft or legacy URLs", legacyMatches.length === 0, legacyMatches.slice(0, 5).join(", "));
+
+  if (process.argv.includes('--structural-only')) {
+    console.log(`\n${failures.length === 0 ? 'ALL STRUCTURAL CHECKS PASSED' : `${failures.length} CHECK(S) FAILED`}\n`);
+    if (failures.length > 0) process.exit(1);
+    return;
+  }
 
   console.log("\n=== Registry reconciliation (documented, not enforced by sitemap.ts) ===");
   const publishedIndexable = TOOLS.filter((t) => t.status === "published" && t.indexable).length;

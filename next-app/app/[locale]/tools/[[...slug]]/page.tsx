@@ -2,14 +2,16 @@ import type { ComponentType } from 'react';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { TrustBadge } from '@/components/analytics/TrustBadge';
 import { TOOLS, CATEGORIES, findToolById } from '@/lib/data/toolsWithSEO';
 import { findPillarBySlug, PILLARS } from '@/lib/data/pillars';
-import { buildCanonical, buildLanguageAlternates } from '@/lib/canonical';
+import { GUIDES } from '@/lib/data/guides';
+import { VERIFIED_TOOL_EXAMPLES } from '@/lib/data/verifiedToolExamples';
+import { buildCanonical, buildLanguageAlternates, buildAlternates } from '@/lib/canonical';
 import { generateToolSchema, generateFAQSchema, generateHowToSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { USE_CASES } from '@/lib/data/content';
 import { truncateForMeta } from '@/lib/seo/metaDescription';
@@ -168,7 +170,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `Browse all XFree developer and SEO tools. JSON formatter, regex tester, Base64 encoder, hash generator, and ${indexableCount - 4}+ more privacy-first tools.`,
       keywords: ['free developer tools', 'seo tools', 'json formatter', 'regex tester', 'XFree'],
       openGraph: { title: `XFree Tools | ${indexableCount}+ Free Developer & SEO Tools`, description: 'Browse all XFree tools.', type: 'website' },
-      alternates: { canonical: buildCanonical('/tools', locale), languages: buildLanguageAlternates('/tools') },
+      alternates: buildAlternates('/tools', locale),
+      ...(!hasEligibleTranslation('/tools', locale) ? { robots: { index: false, follow: true } } : {}),
     };
   }
 
@@ -323,6 +326,8 @@ async function ToolDetail({ tool, locale }: { tool: NonNullable<ReturnType<typeo
     .map(t => localizeTool(t, toolTranslations))
     .slice(0, 4);
   const toolUseCases = USE_CASES.filter(uc => uc.tools.includes(tool.id)).slice(0, 2);
+  const relevantGuides = GUIDES.filter(guide => guide.relatedToolSlugs?.includes(tool.slug)).slice(0, 2);
+  const workedExample = locale === 'en' ? VERIFIED_TOOL_EXAMPLES[tool.slug] : undefined;
 
   const tHeader = await getTranslations({ locale, namespace: 'Header' });
   const categoryTranslationKey = CATEGORY_TRANSLATION_KEYS[tool.category];
@@ -449,13 +454,20 @@ async function ToolDetail({ tool, locale }: { tool: NonNullable<ReturnType<typeo
               </section>
 
               {/* Example */}
-              {tool.exampleInput && (
+              {(workedExample || tool.exampleInput) && (
                 <section className="cyber-card p-6" aria-labelledby="example-heading">
                   <h2 id="example-heading" className="text-lg font-bold text-cyber-text font-mono mb-4"><span className="text-cyber-glow">$</span> Example</h2>
                   <div className="mb-3">
                     <span className="text-xs text-cyber-dim font-mono block mb-2">INPUT:</span>
-                    <pre className="p-3 rounded bg-cyber-bg border border-cyber-border overflow-x-auto text-xs font-mono text-cyber-glow">{tool.exampleInput}</pre>
+                    <pre className="p-3 rounded bg-cyber-bg border border-cyber-border overflow-x-auto text-xs font-mono text-cyber-glow">{workedExample?.input || tool.exampleInput}</pre>
                   </div>
+                  {workedExample && (
+                    <>
+                      <span className="text-xs text-cyber-dim font-mono block mb-2">{workedExample.outputLabel || 'OUTPUT:'}</span>
+                      <pre className="p-3 rounded bg-cyber-bg border border-cyber-border overflow-x-auto text-xs font-mono text-cyber-glow">{workedExample.output}</pre>
+                      <p className="text-sm text-cyber-muted mt-4"><strong className="text-cyber-text">Limitation:</strong> {workedExample.limitation}</p>
+                    </>
+                  )}
                 </section>
               )}
 
@@ -520,6 +532,20 @@ async function ToolDetail({ tool, locale }: { tool: NonNullable<ReturnType<typeo
                   </Link>
                   <p className="text-xs text-cyber-muted mt-2 line-clamp-2">{pillar.description}</p>
                   <Link href={`/pillars/${pillar.slug}`} className="text-xs text-cyber-glow hover:text-cyber-text transition-colors font-mono mt-2 block">View All Pillar Tools →</Link>
+                </div>
+              )}
+
+              {/* Related Tools */}
+              {relevantGuides.length > 0 && (
+                <div className="cyber-card p-4">
+                  <h3 className="text-xs text-cyber-dim font-mono mb-3">RELATED GUIDES</h3>
+                  <div className="space-y-2">
+                    {relevantGuides.map(guide => (
+                      <Link key={guide.slug} href={`/guides/${guide.slug}`} className="block text-sm text-cyber-muted hover:text-cyber-glow">
+                        {guide.title} →
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
 

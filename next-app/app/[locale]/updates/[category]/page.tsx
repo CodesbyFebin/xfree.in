@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import { getSignals } from '@/lib/signals/fetchSignals';
 import { SIGNAL_CATEGORIES, type SignalCategory } from '@/lib/signals/sources';
 import { CATEGORY_RELATED_TOOLS } from '@/lib/signals/relatedTools';
@@ -33,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.label} News & Signals | XFree`,
     description: `Curated ${cat.label.toLowerCase()} news from authoritative developer sources, categorized and cross-linked to relevant XFree tools.`,
     alternates: buildAlternates(`/updates/${category}`, locale),
+    ...(!hasEligibleTranslation(`/updates/${category}`, locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

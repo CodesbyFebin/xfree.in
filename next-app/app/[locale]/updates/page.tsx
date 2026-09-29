@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import { getSignals } from '@/lib/signals/fetchSignals';
 import { SIGNAL_CATEGORIES } from '@/lib/signals/sources';
 import { SignalCard } from '@/components/signals/SignalCard';
@@ -16,6 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     title: 'XFree Signals — Open Web & Developer Intelligence | XFree',
     description: 'Curated developer, AI, and open-web news from Chrome, GitHub, Cloudflare, Hugging Face, OpenAI, Vercel, MDN, and more — categorized and cross-linked to XFree tools.',
     alternates: buildAlternates('/updates', locale),
+    ...(!hasEligibleTranslation('/updates', locale) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

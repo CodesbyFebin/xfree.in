@@ -231,10 +231,10 @@
       "title": "XML サイトマップジェネレーター",
       "shortDescription": "Google や Bing の SEO 向けに XML サイトマップを生成します。",
       "longDescription": "無料の XML サイトマップジェネレーター。優先度、changefreq、lastmod 日付を含む Google 準拠の XML サイトマップを作成します。動画・画像・ニュースサイトマップにも対応。SEO に最適化された出力。",
-      "explanation": "適切な名前空間とオプションの優先度で XML サイトマップを作成します。",
+      "explanation": "入力した URL から標準の名前空間を使用した XML サイトマップを作成します。",
       "howToUse": [
         "URL を入力",
-        "優先度と changefreq を設定",
+        "生成された XML を確認",
         "XML サイトマップをダウンロード"
       ],
       "faqs": []

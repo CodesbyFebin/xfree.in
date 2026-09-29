@@ -1,5 +1,5 @@
 import { getLocale } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 
 export interface BreadcrumbItem {

@@ -1,5 +1,6 @@
 import { ToolDefinition, PillarDefinition } from '@/types';
 import { buildCanonical } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 
 export function generateToolSchema(tool: ToolDefinition, locale: string = 'en') {
   const baseUrl = 'https://www.xfree.in';
@@ -79,7 +80,8 @@ export function generateBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: /^https?:\/\//.test(item.href) ? item.href : buildCanonical(item.href, locale),
+      item: /^https?:\/\//.test(item.href) ? item.href : buildCanonical(item.href,
+        locale && hasEligibleTranslation(item.href, locale) ? locale : 'en'),
     })),
   };
 }

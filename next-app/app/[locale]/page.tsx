@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { TOOLS as ALL_TOOLS, CATEGORIES } from '@/lib/data/tools';
 import { PILLARS as ALL_PILLARS } from '@/lib/data/pillars';
 import { Footer } from '@/components/layout/Footer';

@@ -2,6 +2,8 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { TOOLS, CATEGORIES } from '../lib/data/toolsWithSEO';
 import { GUIDES } from '../lib/data/guides';
+import { PILLARS } from '../lib/data/pillars';
+import { ENGLISH_ONLY_STATIC_PATHS } from '../lib/i18n/routeFamilies';
 import { routing } from '../i18n/routing';
 import type { ToolDefinition } from '../types';
 
@@ -28,12 +30,16 @@ const manifest: Record<string, string[]> = {};
 // These page families render their main copy from English-only source
 // modules today. When localized main bodies are introduced, replace this
 // English-only eligibility with field-level checks for those sources.
-manifest['/guides'] = [routing.defaultLocale];
-for (const path of ['/about', '/how-it-works', '/privacy', '/terms', '/security']) {
+for (const path of ENGLISH_ONLY_STATIC_PATHS) {
   manifest[path] = [routing.defaultLocale];
 }
 for (const guide of GUIDES) manifest[`/guides/${guide.slug}`] = [routing.defaultLocale];
 for (const category of CATEGORIES) manifest[`/categories/${category.slug}`] = [routing.defaultLocale];
+for (const pillar of PILLARS) {
+  manifest[`/pillars/${pillar.slug}`] = [routing.defaultLocale];
+  // This alternate route renders the same pillar body and is not in the sitemap.
+  manifest[`/pillars/${pillar.category}/${pillar.slug}`] = [routing.defaultLocale];
+}
 for (const tool of TOOLS.filter((item) => item.indexable)) {
   manifest[`/tools/${tool.slug}`] = [routing.defaultLocale];
 }

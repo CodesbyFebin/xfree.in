@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
+import { Link } from '@/components/seo/EligibleLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { PILLARS, findPillarBySlug, getPillarsByCategory } from '@/lib/data/pillars';
 import { PILLAR_CATEGORIES } from '@/lib/data/pillarCategories';
 import { TOOLS } from '@/lib/data/toolsWithSEO';
-import { buildCanonical, buildLanguageAlternates } from '@/lib/canonical';
+import { buildCanonical, buildAlternates } from '@/lib/canonical';
+import { hasEligibleTranslation } from '@/lib/i18n/translationEligibility';
 import { generatePillarSchema } from '@/lib/schema';
 import { PillarCategory } from '@/lib/data/pillarCategories';
 import type { Locale } from '@/i18n/routing';
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `Browse XFree ${PILLARS.length} organized tool pillars covering JSON, regex, SEO, security, PDF, image, video, and more. Each pillar connects related micro-tools for easier discovery.`,
       keywords: ['XFree pillars', 'tool categories', 'tool hubs', 'developer tools', 'seo tools', 'free tools'],
       openGraph: { title: `XFree Pillars | ${PILLARS.length} Free Tool Hubs`, description: `Browse ${PILLARS.length} organized tool pillars.`, type: 'website' },
-      alternates: { canonical: buildCanonical('/pillars', locale), languages: buildLanguageAlternates('/pillars') },
+      alternates: buildAlternates('/pillars', locale),
+      ...(!hasEligibleTranslation('/pillars', locale) ? { robots: { index: false, follow: true } } : {}),
     };
   }
 
@@ -37,13 +39,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const { pillars } = await loadContentTranslations(locale);
       const pillar = localizePillar(rawPillar, pillars);
       const path = `/pillars/${slug[0]}`;
-      const canonical = buildCanonical(path, locale);
+      const canonical = buildCanonical(path, hasEligibleTranslation(path, locale) ? locale : 'en');
       const allKeywords = [...(pillar.keywords || []), 'XFree', 'pillar', 'tool hub', pillar.category].filter(Boolean);
       return {
         title: `XFree ${pillar.name} — Free, No Signup`,
         description: pillar.description,
         keywords: allKeywords,
-        alternates: { canonical, languages: buildLanguageAlternates(path) },
+        alternates: buildAlternates(path, locale),
+        ...(!hasEligibleTranslation(path, locale) ? { robots: { index: false, follow: true } } : {}),
         openGraph: { title: `XFree ${pillar.name}`, description: pillar.description, url: canonical, type: 'article' },
         twitter: { card: 'summary_large_image', title: `XFree ${pillar.name}`, description: pillar.description },
       };
@@ -57,13 +60,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const { pillars } = await loadContentTranslations(locale);
       const pillar = localizePillar(rawPillar, pillars);
       const path = `/pillars/${category}/${pillarSlug}`;
-      const canonical = buildCanonical(path, locale);
+      const canonical = buildCanonical(`/pillars/${pillarSlug}`);
       const allKeywords = [...(pillar.keywords || []), 'XFree', pillar.category].filter(Boolean);
       return {
         title: `XFree ${pillar.name} | ${pillar.toolCount} Free Tools, No Signup`,
         description: pillar.description,
         keywords: allKeywords,
-        alternates: { canonical, languages: buildLanguageAlternates(path) },
+        alternates: { canonical, languages: {} },
+        robots: { index: false, follow: true },
         openGraph: { title: `XFree ${pillar.name}`, description: pillar.description, url: canonical, type: 'article' },
         twitter: { card: 'summary_large_image', title: `XFree ${pillar.name}`, description: pillar.description },
       };

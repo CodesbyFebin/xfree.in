@@ -4,6 +4,7 @@ import { PILLARS } from '@/lib/data/pillars';
 import { GUIDES } from '@/lib/data/guides';
 import { routing } from '@/i18n/routing';
 import { eligibleLocalesForPath } from '@/lib/i18n/translationEligibility';
+import { STATIC_PATHS } from '@/lib/i18n/routeFamilies';
 
 const BASE_URL = 'https://www.xfree.in';
 
@@ -44,30 +45,6 @@ function localizedEntries(path: string, lastModified?: string): MetadataRoute.Si
     alternates: { languages },
   }));
 }
-
-const STATIC_PATHS = [
-  '/',
-  '/pillars',
-  '/tools',
-  '/guides',
-  '/about',
-  '/blog',
-  '/contact',
-  '/faq',
-  '/how-it-works',
-  '/privacy',
-  '/terms',
-  '/security',
-  '/roadmap',
-  '/use-cases',
-  '/xfree-app',
-  '/updates',
-  '/updates/ai',
-  '/updates/web-development',
-  '/updates/open-source',
-  '/updates/security',
-  '/updates/browser',
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // None of these carry a tracked "last significant change" date - see
