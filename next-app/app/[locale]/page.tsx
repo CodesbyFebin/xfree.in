@@ -31,7 +31,7 @@ interface UseCase {
 const PUBLIC_TOOLS: Tool[] = [
   { slug: 'json-formatter', title: 'JSON Formatter', category: 'Developer', badge: '★ FLAGSHIP', description: 'Format, validate, repair, and minify JSON data with instant tree inspect.' },
   { slug: 'regex-tester', title: 'Regex Tester', category: 'Developer', badge: 'POPULAR', description: 'Test JS regex patterns live with match group tables and replacements.' },
-  { slug: 'xml-sitemap-generator', title: 'Sitemap Generator', category: 'SEO', badge: '★ FLAGSHIP', description: 'Extract links from HTML and generate Google XML sitemaps with priority.' },
+  { slug: 'xml-sitemap-generator', title: 'Sitemap Generator', category: 'SEO', badge: '★ FLAGSHIP', description: 'Enter canonical URLs and create a basic XML sitemap to review and download.' },
   { slug: 'meta-tag-generator', title: 'Meta Tag Generator', category: 'SEO', badge: 'ESSENTIAL', description: 'Generate meta titles, descriptions, and preview social cards.' },
   { slug: 'jwt-decoder', title: 'JWT Decoder', category: 'Security', badge: 'POPULAR', description: 'Decode OAuth JWT tokens and convert Base64 strings safely.' },
   { slug: 'cron-generator', title: 'Cron Generator', category: 'Developer', badge: 'NEW', description: 'Generate cron expressions with human-readable output.' },

@@ -230,7 +230,7 @@
     "xml-sitemap-generator": {
       "title": "XML साइटमैप जेनरेटर",
       "shortDescription": "Google और Bing SEO के लिए XML साइटमैप जेनरेट करें।",
-      "longDescription": "मुफ़्त XML साइटमैप जेनरेटर। प्राथमिकताओं, changefreq और lastmod तारीखों के साथ Google-अनुरूप XML साइटमैप बनाएं। वीडियो, इमेज और न्यूज़ साइटमैप के लिए समर्थन। SEO-अनुकूलित आउटपुट।",
+      "longDescription": "दर्ज किए गए URL से मानक नेमस्पेस वाला सामान्य XML साइटमैप बनाएं। जमा करने से पहले जाँचें कि हर URL कैनोनिकल है और 200 लौटाता है।",
       "explanation": "आपके दिए गए URL से मानक नेमस्पेस वाला XML साइटमैप बनाता है।",
       "howToUse": [
         "URLs दर्ज करें",

@@ -230,7 +230,7 @@
     "xml-sitemap-generator": {
       "title": "Generador de Sitemap XML",
       "shortDescription": "Genera sitemaps XML para el SEO de Google y Bing.",
-      "longDescription": "Generador de sitemap XML gratuito. Crea sitemaps XML compatibles con Google con prioridades, changefreq y fechas lastmod. Compatible con sitemaps de video, imagen y noticias. Salida optimizada para SEO.",
+      "longDescription": "Crea un sitemap XML básico a partir de las URL que introduces, usando el espacio de nombres estándar. Antes de enviarlo, comprueba que cada URL sea canónica y devuelva 200.",
       "explanation": "Crea un sitemap XML con el espacio de nombres estándar a partir de las URL que proporciones.",
       "howToUse": [
         "Introduce las URLs",

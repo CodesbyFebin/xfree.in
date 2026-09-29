@@ -395,7 +395,7 @@ export const TOOLS_WITH_SEO: ToolDefinition[] = [
     title: 'XML Sitemap Generator',
     pillarKeyword: 'sitemap-generators',
     shortDescription: 'Generate XML sitemaps for Google and Bing SEO.',
-    longDescription: 'Free XML sitemap generator. Create Google-compliant XML sitemaps with priorities, changefreq, and lastmod dates. Support for video, image, and news sitemaps. SEO-optimized output.',
+    longDescription: 'Create a basic XML sitemap from the URLs you enter, using the standard sitemap namespace. Review that each URL is canonical and returns 200 before submitting the file.',
     category: 'seo-tools',
     categoryLabel: 'SEO & URL Tools',
     iconName: 'Map',
